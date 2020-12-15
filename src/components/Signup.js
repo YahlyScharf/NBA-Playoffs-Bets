@@ -4,11 +4,16 @@ import { Link, Redirect } from "react-router-dom";
 import NavBar from './Navbar'
 import FormError from '../formSubmit/fromError-com';
 import FormSuccess from '../formSubmit/formSucess-com';
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 function SignUp() {
    
     const [signupError, setSignupError] = useState(false);
     const [signupSucess, setSignupSuccess] = useState(false);
+    const [signUpSuccessText,setSignupSuccessText] = useState();
+    const [signUpErrorText,setSignupErrorText] = useState();
     const [redirectOnLogin, setRedirectOnLogin] = useState(false);
 
     const [user, setUser] = useState({
@@ -62,12 +67,15 @@ function SignUp() {
             const { data } = await axios.post("http://localhost:5000/signup", user)
             setSignupSuccess(true);
             setSignupError(false);
+            setSignupSuccessText(data.message);
             setTimeout(() => {
                 setRedirectOnLogin(true)
             }, 1000);
         } catch (error) {
+            const { data } = error.response;
             setSignupSuccess(false);
             setSignupError(true);
+            setSignupErrorText(data.message);
         }
     }
 
@@ -90,8 +98,8 @@ function SignUp() {
                     
                     <h3 className="not-h">Sign Up</h3>
 
-                   {signupError && <FormError text="Email already resgisterd" />}
-                   {signupSucess && <FormSuccess text="Signed up successfully" />}
+                   {signupError && <FormError text={signUpErrorText} />}
+                   {signupSucess && <FormSuccess text={signUpSuccessText} />}
                    <br />
                    <br />
                     
@@ -119,7 +127,7 @@ function SignUp() {
                         <input onChange={changeHandle} name="PS" type="password" className="form-control-lg " placeholder="Enter password" required />
                     </div>
 
-                    <button type="submit" onClick={clickHandle} className="btn btn-primary">Sign Up</button>
+                    <button type="submit" onClick={clickHandle} className="btn btn-success btn-primary">Sign Up <FontAwesomeIcon icon={faUserPlus} /> </button>
                     <br />
                     <br />
               

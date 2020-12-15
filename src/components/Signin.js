@@ -3,8 +3,12 @@ import { Link, Redirect } from "react-router-dom";
 import axios from 'axios';
 import NavBar from './Navbar'
 import FormError from '../formSubmit/fromError-com';
+import FormSuccess from '../formSubmit/formSucess-com';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 
 
@@ -12,7 +16,9 @@ function SignIn() {
     const authContext = useContext(AuthContext);
     const [redirectOnLogin, setRedirectOnLogin] = useState(false);
     const [signInError, setSignInError] = useState(false);
+    const [signInSuccess, setSignInSuccess] = useState(false);
     const [signInErrorText, setSignInErrorText] = useState();
+    const [signInSuccessText, setSignInSuccessText] = useState();
 
 
 
@@ -47,7 +53,8 @@ function SignIn() {
             const { data } = await axios.post("http://localhost:5000/signin", user)
             authContext.setAuthState(data);
             setSignInError(false);
-            console.log(data);
+            setSignInSuccess(true)
+            setSignInSuccessText(data.message);
             setTimeout(() => {
                 setRedirectOnLogin(true)
             }, 1000)
@@ -55,6 +62,7 @@ function SignIn() {
         } catch (error) {
             const { data } = error.response;
             setSignInError(true);
+            setSignInSuccess(false)
             setSignInErrorText(data.message);
         }
 
@@ -79,6 +87,7 @@ function SignIn() {
                         <h3 className="not-h">Sign In</h3>
 
                         {signInError && <FormError text={signInErrorText} />}
+                        {signInSuccess&& <FormSuccess text={signInSuccessText} />}
                         <div className="form-group">
                             <label className="not" htmlFor="email">Email</label>
                             <br />
@@ -91,7 +100,7 @@ function SignIn() {
                             <input type="password" onChange={changeHandle} name="password" id="password" className="form-control-lg" placeholder="Enter password" />
                         </div>
 
-                        <button type="submit" onClick={clickHandle} className="btn btn-primary">Login</button>
+                        <button type="submit" onClick={clickHandle} className="btn btn-primary btn-success">Login <FontAwesomeIcon icon={faSignInAlt} /></button>
                         <br />
                         <br />
                         

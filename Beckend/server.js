@@ -25,6 +25,10 @@ app.use(express.json())
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
 const connection = mongoose.connection;
 connection.once('open', () => {
     console.log('MongoDB connection established succesfully');
@@ -92,7 +96,7 @@ app.post("/signup", async (req, res) => {
         if (existingUsername) {
             return res
                 .status(400)
-                .json({ message: 'This email address is alreay registerd' });
+                .json({ message: 'This Email Address Is Alreay Registerd' });
         }
 
         const newUser = new User(userData);
@@ -120,7 +124,7 @@ app.post("/signup", async (req, res) => {
             }
 
             return res.json({
-                message: 'user added!',
+                message: 'User Added!',
                 token,
                 userInfo,
                 expiresAt
@@ -129,11 +133,11 @@ app.post("/signup", async (req, res) => {
         } else {
             return res
                 .status(400)
-                .json({ message: 'There was a problem creating your account' });
+                .json({ message: 'There Was A Problem Creating Your Account' });
         }
     } catch (err) {
         return res.status(400).json({
-            message: 'There was a problem creating your account'
+            message: 'There Was A Problem Creating Your Account'
         });
     }
 
@@ -151,7 +155,7 @@ app.post("/signin", async (req, res) => {
         if (!user) {
             return res
                 .status(400)
-                .json({ message: 'Wrond email or password' })
+                .json({ message: 'Wrong Email Or Password' })
         };
 
         const userVelidation = await verifyPassword(
@@ -168,20 +172,20 @@ app.post("/signin", async (req, res) => {
             const expiresAt = decodeedToken.exp;
 
             return res.json({
-                message: 'user authorized!',
+                message: 'User Authorized!',
                 token,
                 userInfo,
                 expiresAt
             });
         } else {
-            res.status(403).json({ message: 'Wrong email or password' });
+            res.status(403).json({ message: 'Wrong Email Or Password' });
         }
     }
     catch (err) {
         console.log(err);
         return res
             .status(400)
-            .json({ message: 'Something went wrong.' });
+            .json({ message: 'Something Went Wrong.' });
     }
 
 });

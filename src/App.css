@@ -47,3 +47,118 @@ body {
     }
   }
   
+
+  /*********************** bracket ********************************************/
+
+#first-round-w, #second-round-w, #third-round-w, #finals,#first-round-e, #second-round-e, #third-round-e
+{
+    width: 13%;
+    height: 75px;
+}
+#first-round-w
+{
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+    float: left;
+    margin-left: 1%;
+    padding-top: 100px;
+}
+#second-round-w 
+{
+  border-top-left-radius: 1px;
+  border-bottom-left-radius: 1px; 
+    float: left;
+    margin-left:1%;
+    margin-top: 13%;
+}
+
+#third-round-w
+{
+  border-top-left-radius: 1px;
+  border-bottom-left-radius: 1px;
+  float: left;
+  margin-left:0%;
+  margin-top: 20%;
+}
+
+#finals
+{
+  border-top-left-radius: 1px;
+  border-bottom-left-radius: 1px;
+  float: left;
+  margin-left:1%;
+  margin-top: 3%;
+}
+
+#third-round-e
+{
+  border-top-left-radius: 1px;
+  border-bottom-left-radius: 1px;
+  float: left;
+  margin-right:0%;
+  margin-left: 2%;
+  margin-top: 20%;
+}
+
+#second-round-e
+{
+  border-top-left-radius: 1px;
+  border-bottom-left-radius: 1px;
+  float: left;
+  margin-left:20%;
+  margin-top: 13%;
+}
+
+#first-round-e
+{
+  border-top-left-radius: 1px;
+  border-bottom-left-radius: 1px;
+  float: right;
+  margin-right: 1%;
+  padding-top: 100px;
+}
+
+
+.f-h3
+{
+  font-weight: 900;
+  font-style: italic;
+  color: gold;
+
+}
+
+.third-round-w {
+  float: right;
+  width:20%;
+  padding-top: 205px;
+  padding-right: 700px;
+}
+
+  .b-ul {
+    margin: 0;
+    width: 100%;
+    padding: 0px 0;
+    height: 100px;
+    margin-bottom: 25px;
+  }
+
+  .b-li {
+    list-style-type: none;
+    border-style: solid;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    font-weight: 800;
+    color: black;
+  }
+
+
+  .b-ta {
+    width:20px;
+    border-style: hidden;
+    font-weight: 800;
+  }
+.bet-btn {
+margin-top: 150%;
+font-weight: 700;
+}

@@ -47,10 +47,12 @@ body {
   }
   
   .rounded {
+  
     border-radius: 0.25rem;
   }
 
   .border-red-600 {
+    
     border-color: #e53e3e;
   }
 
@@ -86,6 +88,8 @@ body {
 
   .mt-8 {
     margin-top: 2rem;
+    margin-right: 35% ;
+    margin-left: 35%;
   }
   
 
@@ -110,3 +114,4 @@ body {
     color:white;
     font-weight: bolder;
   }
+

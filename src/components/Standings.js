@@ -1,39 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from "./NavbarDashboard";
 import axios from 'axios';
-import { makeStyles, withTheme } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 
-
-const useStyles = makeStyles({
-    table: {
-        minWidth: 650
-    },
-
-});
 
 
 
 
 function TableGen() {
-    const classes = useStyles();
+   
     const [users, setUsers] = useState([]);
 
-    axios.get("http://localhost:5000/users")
+    useEffect (() => {
+        axios.get("http://localhost:5000/users")
         .then(response => {
             setUsers([...response.data])
-        })
-        .catch(err => JSON.parse(err));
-        
-    users.map(user => {
-    
+        });
     })
+  
+        
+        function compareUsers( a, b ) {
+            if ( a.score < b.score ){
+              return 1;
+            }
+            if ( a.score> b.score ){
+              return -1;
+            }
+            return 0;
+          }
+          
+          users.sort( compareUsers );
     return (
 
 
