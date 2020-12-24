@@ -60,8 +60,21 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    hasBet: {
+        type: Boolean,
+        required: true
+    },
     score: {
-        type:Number,
+        type: Number,
+    },
+    logCount: {
+        type: Number,
+    },
+    bet : {
+        teams: [],
+        srTeams:[],
+        trTeams:[],
+        finals:[]
     }
 }, {
     timestamps: true
@@ -85,7 +98,14 @@ app.post("/signup", async (req, res) => {
             email: email.toLowerCase(),
             password: hashedPassword,
             role: 'admin',
-            score:0
+            hasBet:false,
+            score: 0,
+            bet : {
+                teams: [],
+                srTeams:[],
+                trTeams:[],
+                finals:[]
+            }
         };
 
 
@@ -112,7 +132,9 @@ app.post("/signup", async (req, res) => {
                 lastName,
                 email,
                 role,
-                score
+                hasBet,
+                score,
+                bet 
             } = savedUser;
 
             const userInfo = {
@@ -120,7 +142,9 @@ app.post("/signup", async (req, res) => {
                 lastName,
                 email,
                 role,
-                score
+                hasBet,
+                score,
+                bet
             }
 
             return res.json({
@@ -190,12 +214,80 @@ app.post("/signin", async (req, res) => {
 
 });
 
+
 app.get("/users", (req, res) => {
     User.find()
-    .then(users => res.json(users))
-    .catch(err => res.status(400).json(err))
+        .then(users => res.json(users))
+        .catch(err => res.status(400).json(err))
 
-})
+});
+
+app.post("/user", (req, res) => {
+    const {userInfo} = req.body;
+
+    User.findById({_id : userInfo._id})
+        .then(user => res.json(user))
+        .catch(err => res.status(400).json(err))
+
+});
+
+app.post("/bet", (req, res) => {
+    const {teams,srTeams,trTeams,finals,userInfo} = req.body;
+
+    finals.map(team => team.value = team.value -12)
+
+    trTeams.map(team => {
+        if (team.value >= 12) {
+            return team.value = 4
+        } else if (team.value >= 8) {
+            return team.value = team.value -8
+        }
+    });
+
+    srTeams.map(team => {
+        if (team.value >= 12) {
+            return team.value = 4
+        } else if (team.value >= 8) {
+            return team.value = 4
+        } else if (team.value >= 4) {
+            return team.value = team.value -4
+        } 
+    });
+
+    teams.map(team => {
+        if (team.value >= 12) {
+            return team.value = 4
+        } else if (team.value >= 8) {
+            return team.value = 4
+        } else if (team.value >= 4) {
+            return team.value = 4
+        } 
+    });
+
+    const newBet = {
+        teams,
+        srTeams,
+        trTeams,
+        finals
+    }
+   
+    User.findOneAndUpdate({'email':userInfo.email},{'bet':newBet} ,(err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            User.findOneAndUpdate({'email':userInfo.email},{hasBet:true}, err => {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log('Great Success!');
+                }
+            })
+        }
+    })
+
+
+
+});
 
 app.listen(5000 || process.env.PORT, () => {
     console.log('Server started on port 5000');

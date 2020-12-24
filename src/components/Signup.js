@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState , useContext} from 'react';
 import axios from 'axios';
 import { Link, Redirect } from "react-router-dom";
 import NavBar from './Navbar'
-import FormError from '../formSubmit/fromError-com';
-import FormSuccess from '../formSubmit/formSucess-com';
+import FormError from '../addOns/fromError-com';
+import FormSuccess from '../addOns/SignupSuccess';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { AuthContext } from '../context/AuthContext';
+
 
 
 function SignUp() {
    
+    const authContext = useContext(AuthContext);
     const [signupError, setSignupError] = useState(false);
     const [signupSucess, setSignupSuccess] = useState(false);
     const [signUpSuccessText,setSignupSuccessText] = useState();
@@ -64,13 +67,14 @@ function SignUp() {
         try {
             e.preventDefault();
 
-            const { data } = await axios.post("http://localhost:5000/signup", user)
+            const { data } = await axios.post("http://localhost:5000/signup", user);
+            authContext.setAuthState(data);
             setSignupSuccess(true);
             setSignupError(false);
             setSignupSuccessText(data.message);
             setTimeout(() => {
                 setRedirectOnLogin(true)
-            }, 1000);
+            }, 1100);
         } catch (error) {
             const { data } = error.response;
             setSignupSuccess(false);
@@ -79,14 +83,14 @@ function SignUp() {
         }
     }
 
+    
+
     return (
         <>
-            {redirectOnLogin && <Redirect to="/signin" />}
+            {redirectOnLogin && <Redirect to="/placeBet" />}
 
             <div>
                 <NavBar />
-
-                
 
                 <form>
                     <br />

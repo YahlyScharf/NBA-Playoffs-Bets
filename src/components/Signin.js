@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { Link, Redirect } from "react-router-dom";
 import axios from 'axios';
 import NavBar from './Navbar'
-import FormError from '../formSubmit/fromError-com';
-import FormSuccess from '../formSubmit/formSucess-com';
+import FormError from '../addOns/fromError-com';
+import FormSuccess from '../addOns/SigninSuccess';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
 
 
 
@@ -52,12 +54,18 @@ function SignIn() {
             e.preventDefault();
             const { data } = await axios.post("http://localhost:5000/signin", user)
             authContext.setAuthState(data);
+            const hasBetCon = data.userInfo.hasBet;
             setSignInError(false);
             setSignInSuccess(true)
             setSignInSuccessText(data.message);
+            if (hasBetCon === false) {
+                setTimeout(() => {
+                    setRedirectOnLogin(false)
+                }, 2500)
+            }
             setTimeout(() => {
                 setRedirectOnLogin(true)
-            }, 1000)
+            }, 2500)
 
         } catch (error) {
             const { data } = error.response;
@@ -76,7 +84,6 @@ function SignIn() {
 
                 <NavBar />
 
-
                 <form>
                     <br />
                     <br />
@@ -85,7 +92,6 @@ function SignIn() {
                             Not registered? <Link to={"/signup"}>Sign Up </Link>
                         </p>
                         <h3 className="not-h">Sign In</h3>
-
                         {signInError && <FormError text={signInErrorText} />}
                         {signInSuccess&& <FormSuccess text={signInSuccessText} />}
                         <div className="form-group">

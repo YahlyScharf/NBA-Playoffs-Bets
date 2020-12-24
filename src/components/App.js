@@ -9,7 +9,9 @@ import SignIn from './Signin';
 import SignUp from './Signup'
 import Dashboard from './Dashboard';
 import Standings from "./Standings"
-import Hub from './Hub'
+import NewBet from './NewBet'
+import Transition from '../addOns/Transition'
+import LoadingPage from '../addOns/LoadingPage';
 
 function App() {
 
@@ -19,9 +21,12 @@ function App() {
         <Route exact path='/' component={SignIn} />
         <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/..." component={LoadingPage} />
         <Route path="/dashboard" component={Dashboard} />
+        <Route path="/placeBet" component={Transition} />
+        <Route path="/place-bet" component={NewBet} />
         <Route path="/standings" component={Standings} />
-        <Route path="/hub" component={Hub} />
+       
       </Switch>
     );
   }

@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/core": "^11.0.0",
+    "@emotion/react": "^11.1.2",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
@@ -25,11 +27,14 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^6.0.1",
     "react": "^17.0.1",
+    "react-alert": "^7.0.2",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
     "react-dropdown-select": "^4.7.0",
+    "react-loader-spinner": "^3.1.14",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "react-spinners": "^0.9.0",
     "react-tournament-bracket": "^0.2.4",
     "web-vitals": "^0.2.4"
   },

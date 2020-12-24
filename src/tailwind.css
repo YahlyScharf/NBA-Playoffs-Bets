@@ -79,10 +79,12 @@ body {
 
   .text-red-500 {
     color: #f56565;
+    font-weight: 700;
   }
 
   .text-green-500 {
     color: #48bb78;
+    font-weight: 700;
   }
 
 
@@ -108,10 +110,13 @@ body {
   .not {
     color:black;
     font-weight: bolder;
+    font-size: 15px;
   }
 
   .not-h {
     color:white;
     font-weight: bolder;
   }
+
+
 
