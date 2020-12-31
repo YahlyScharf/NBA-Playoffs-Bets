@@ -29,7 +29,7 @@ function Bracket() {
                             <li className="b-li">{userInfo.bet.teams[5].name}  {userInfo.bet.teams[5].value}</li>
                         </ul>
                         <ul className="b-ul">
-                            <li className="b-li">{userInfo.bet.teams[6].name}  {userInfo.bet.teams[7].value}</li>
+                            <li className="b-li">{userInfo.bet.teams[6].name}  {userInfo.bet.teams[6].value}</li>
                             <li className="b-li">{userInfo.bet.teams[7].name}  {userInfo.bet.teams[7].value}</li>
                         </ul>
                     </div>

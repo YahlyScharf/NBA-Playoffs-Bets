@@ -1,34 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from "./NavbarDashboard";
 import axios from 'axios';
+import { Redirect, useParams,Link } from 'react-router-dom';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 
 
 
 function TableGen() {
-   
+
     const [users, setUsers] = useState([]);
 
-    useEffect (() => {
+    useEffect(() => {
         axios.get("http://localhost:5000/users")
-        .then(response => {
-            setUsers([...response.data])
-        });
+            .then(response => {
+                setUsers([...response.data])
+            });
     })
-  
-        
-        function compareUsers( a, b ) {
-            if ( a.score < b.score ){
-              return 1;
-            }
-            if ( a.score> b.score ){
-              return -1;
-            }
-            return 0;
-          }
-          
-          users.sort( compareUsers );
+
+    function compareUsers(a, b) {
+        if (a.score < b.score) {
+            return 1;
+        }
+        if (a.score > b.score) {
+            return -1;
+        }
+        return 0;
+    }
+
+    users.sort(compareUsers);
+
+    function clickHandle (e,id) {
+        <Redirect to ="/user-bet/${id}" />
+    }
+
     return (
 
 
@@ -45,13 +52,16 @@ function TableGen() {
                         <th>Place</th>
                         <th>Name</th>
                         <th>Score</th>
+                        <th>Users Bet</th>
                     </tr>
-                    {users.map((user,index) => {
+                    {users.map((user, index) => {
+                        const id = user._id;
                         return (
-                            <tr>
+                            <tr key={index}>
                                 <th>{index + 1}</th>
                                 <th>{user.firstName} {user.lastName}</th>
                                 <th>{user.score}</th>
+                                <th>{<Link to={`/user-bet/${user._id}`} className="bet-link"><FontAwesomeIcon color="orange" icon={faPlusCircle} /></Link>}</th>
                             </tr>
                         );
                     })}

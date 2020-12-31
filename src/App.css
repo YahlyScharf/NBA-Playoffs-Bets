@@ -1,6 +1,6 @@
 body {
    background-image: url("https://cdn.vox-cdn.com/thumbor/yT88BoG29xZ_WSgyuIROBDnSXvY=/1400x1050/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/19725578/TheRinger_Top25NBAPlayers_2.png");
-    background-size: cover;
+    background-size:cover;
     font-weight:500;
   }
   
@@ -163,6 +163,11 @@ margin-top: 150%;
 font-weight: 700;
 }
 
+:hover.bet-btn {
+  background-color: white;
+  color: green;
+  }
+
 
 .pop-up-div {
   height: 560px;
@@ -213,3 +218,31 @@ margin-top: 75px;
   font-weight: 600;
   border-radius: 30px;
  }
+
+
+.home-h1 {
+  /* color: rgb(19, 20, 20); */
+  color: black;
+  font-weight: 900;
+  font-size:55px;
+  float: left;
+  margin-left: 2%;
+  margin-top: 18%;
+}
+
+.home-p {
+  color: black;
+  font-weight: 800;
+  font: 20px;
+  float: left;
+  margin-left: 7% ;
+}
+
+.home-but {
+  float: right;
+  margin-right: 20%;
+  margin-top: 6%;
+  padding: 20px 40px;
+  font-size: 20px;
+  border-radius: 10px;
+}

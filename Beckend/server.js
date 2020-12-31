@@ -196,7 +196,7 @@ app.post("/signin", async (req, res) => {
             const expiresAt = decodeedToken.exp;
 
             return res.json({
-                message: 'User Authorized!',
+                message: 'Logged In!',
                 token,
                 userInfo,
                 expiresAt
@@ -223,9 +223,9 @@ app.get("/users", (req, res) => {
 });
 
 app.post("/user", (req, res) => {
-    const {userInfo} = req.body;
+    const {id} = req.body;
 
-    User.findById({_id : userInfo._id})
+    User.findById({_id : id})
         .then(user => res.json(user))
         .catch(err => res.status(400).json(err))
 
@@ -255,11 +255,7 @@ app.post("/bet", (req, res) => {
     });
 
     teams.map(team => {
-        if (team.value >= 12) {
-            return team.value = 4
-        } else if (team.value >= 8) {
-            return team.value = 4
-        } else if (team.value >= 4) {
+       if (team.value >= 4) {
             return team.value = 4
         } 
     });

@@ -87,7 +87,7 @@ function SignUp() {
 
     return (
         <>
-            {redirectOnLogin && <Redirect to="/placeBet" />}
+            {redirectOnLogin && <Redirect to="/place-bet" />}
 
             <div>
                 <NavBar />
@@ -96,16 +96,12 @@ function SignUp() {
                     <br />
                     <br />
                     <br />
-                    <p className="forgot-password text-middle not-h">
-                        Already registered? <Link to={"/signin"}>Sign In </Link>
-                    </p>
+               
                     
-                    <h3 className="not-h">Sign Up</h3>
+                    <h3 className="not-sh">Sign Up</h3>
 
                    {signupError && <FormError text={signUpErrorText} />}
                    {signupSucess && <FormSuccess text={signUpSuccessText} />}
-                   <br />
-                   <br />
                     
                     <div className="form-group">
                         <label className="not">First name</label>
@@ -130,11 +126,10 @@ function SignUp() {
                         <br />
                         <input onChange={changeHandle} name="PS" type="password" className="form-control-lg " placeholder="Enter password" required />
                     </div>
-
+                    
                     <button type="submit" onClick={clickHandle} className="btn btn-success btn-primary">Sign Up <FontAwesomeIcon icon={faUserPlus} /> </button>
                     <br />
                     <br />
-              
                 </form>
             </div>
         </>

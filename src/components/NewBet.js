@@ -1,21 +1,64 @@
-import React, {useEffect,useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Bracket from './Bracket'
 import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Alert from 'react-bootstrap/Alert'
+import Button from 'react-bootstrap/Button'
 
 
 function NewBet() {
-    const [show,setShow] = useState(true)
+
+    const authContext = useContext(AuthContext);
+    const {
+        userInfo
+    } = authContext.authState;
+
+    const [show, setShow] = useState(true);
+    const [showAlret, setShowAlert] = useState(true);
+  
+
+    function clickHandle() {
+        setShow(false)
+    }
+
+    function linkClickHandle() {
+        setShow(true)
+    }
 
     return (
-        <div>
-            <h1 className="text-left-h1">Place Your Bet</h1>
-            {show ? <Alert variant="info" onClose={() => setShow(false)} dismissible className='info-alert'>
-                This is where you place your bet! Please follow the instructions mentioned before.
-                Need a reminder? <Alert.Link href="/placeBet">Click Here.</Alert.Link>
-            </Alert> : null}
-            <Bracket />
+        <>
+            <div>
+                {userInfo.hasBet ? <Redirect to="/dashboard" /> : null}
+                {show ? <div>
+                    <Alert show={show} variant="info" className='si-alert'>
+                        <Alert.Heading>Welcome {userInfo.firstName} ,Nice to have you here!</Alert.Heading>
+                        <br />
+                        <p>Before you start betting, there are a few important things to keep in mind: </p>
+                        <br />
+                        <ul>
+                            <li className="pop-up-div-li">Your bet will not be editable! Please make sure to recheck your bet prior to submitting.</li>
+                            <li className="pop-up-div-li">Make sure your scores only contain 0-4 values - For exemple, no "01" or "03", but "1" or "3".</li>
+                        </ul>
+                        <hr />
+                        <div className="d-flex justify-content-end">
+                            <Button onClick={clickHandle} variant="outline-info">
+                                Got it <FontAwesomeIcon icon={faThumbsUp} />
+                            </Button>
+                        </div>
+                    </Alert>
+                </div>
+                    : <>  <h1 className="text-left-h1">Place Your Bet</h1>
+            { showAlret ? <Alert variant="info" onClose={() => setShowAlert(false)} dismissible className='info-alert'>
+                    This is where you place your bet! Please follow the instructions mentioned before.
+                Need a reminder? <Alert.Link onClick={linkClickHandle}>Click Here.</Alert.Link>
+                </Alert> : null}
+                <Bracket /> </>}
+
+
         </div>
+        </>
     );
 }
 

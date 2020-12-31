@@ -18,28 +18,48 @@ function Bracket() {
 
     const [redirect, setRedirect] = useState(false);
 
-    const [teams, setTeams] = useState([
-
+    const [teams1, setTeams1] = useState([
         { name: "Lakers", value: 0 },
         { name: "Trail Blazers", value: 0 },
         { name: "Rockets", value: 0 },
-        { name: "Thunder", value: 0 },
+        { name: "Thunder", value: 0 }
+    ]);
+
+    const [teams2, setTeams2] = useState([
         { name: "Nuggets", value: 0 },
         { name: "Jazz", value: 0 },
         { name: "Mavricks", value: 0 },
-        { name: "Clippers", value: 0 },
+        { name: "Clippers", value: 0 }
+    ]);
+
+    const [teams3, setTeams3] = useState([
         { name: "Bucks", value: 0 },
         { name: "Magic", value: 0 },
         { name: "Heat", value: 0 },
-        { name: "Pacers", value: 0 },
+        { name: "Pacers", value: 0 }
+    ]);
+
+    const [teams4, setTeams4] = useState([
         { name: "Celtics", value: 0 },
         { name: "76ers", value: 0 },
         { name: "Nets", value: 0 },
         { name: "Raptors", value: 0 }
     ]);
-    var [srTeams, setSrTeams] = useState([]);
-    var [trTeams, setTrTeams] = useState([]);
-    var [finals, setFinals] = useState([]);
+    const [srTeams1, setSrTeams1] = useState([]);
+    const [srTeams2, setSrTeams2] = useState([]);
+    const [srTeams3, setSrTeams3] = useState([]);
+    const [srTeams4, setSrTeams4] = useState([]);
+
+    const [trTeams1, setTrTeams1] = useState([]);
+    const [trTeams2, setTrTeams2] = useState([]);
+    const [trTeams3, setTrTeams3] = useState([]);
+    const [trTeams4, setTrTeams4] = useState([]);
+
+    const finalsSetUpE = [...trTeams1,...trTeams2];
+    const finalsSetUpW = [...trTeams3,...trTeams4];
+
+    const [finals1, setFinals1] = useState([]);
+    const [finals2, setFinals2] = useState([]);
 
     function changeHandleR1(e) {
         const { value, name } = e.target
@@ -47,103 +67,170 @@ function Bracket() {
         parseInt(number);
 
         if (number === "0") {
-            teams[0].value = parseInt(value);
+            teams1[0].value = parseInt(value);
         } else if (number === "1") {
-            teams[1].value = parseInt(value);
+            teams1[1].value = parseInt(value);
         } else if (number === "2") {
-            teams[2].value = parseInt(value);
+            teams1[2].value = parseInt(value);
         } else if (number === "3") {
-            teams[3].value = parseInt(value);
+            teams1[3].value = parseInt(value);
         } else if (number === "4") {
-            teams[4].value = parseInt(value);
+            teams2[0].value = parseInt(value);
         } else if (number === "5") {
-            teams[5].value = parseInt(value);
+            teams2[1].value = parseInt(value);
         } else if (number === "6") {
-            teams[6].value = parseInt(value);
+            teams2[2].value = parseInt(value);
         } else if (number === "7") {
-            teams[7].value = parseInt(value);
+            teams2[3].value = parseInt(value);
         } else if (number === "8") {
-            teams[8].value = parseInt(value);
+            teams3[0].value = parseInt(value);
         } else if (number === "9") {
-            teams[9].value = parseInt(value);
+            teams3[1].value = parseInt(value);
         } else if (number === "10") {
-            teams[10].value = parseInt(value);
+            teams3[2].value = parseInt(value);
         } else if (number === "11") {
-            teams[11].value = parseInt(value);
+            teams3[3].value = parseInt(value);
         } else if (number === "12") {
-            teams[12].value = parseInt(value);
+            teams4[0].value = parseInt(value);
         } else if (number === "13") {
-            teams[13].value = parseInt(value);
+            teams4[1].value = parseInt(value);
         } else if (number === "14") {
-            teams[14].value = parseInt(value);
+            teams4[2].value = parseInt(value);
         } else if (number === "15") {
-            teams[15].value = parseInt(value);
+            teams4[3].value = parseInt(value);
         }
 
-        setSrTeams(() => {
-            return teams.filter(team => team.value === 4);
-        })
+        if (number === '0' || number === '1' || number === '2' || number === '3') {
+            setSrTeams1(() => {
+                return teams1.filter(team => team.value === 4);
+            });
+        }
+        if (number === '4' || number === '5' || number === '6' || number === '7') {
+            setSrTeams2(() => {
+                return teams2.filter(team => team.value === 4);
+            });
+
+        }
+        if (number === '8' || number === '9' || number === '10' || number === '11') {
+            setSrTeams3(() => {
+                return teams3.filter(team => team.value === 4);
+            });
+        }
+        if (number === '12' || number === '13' || number === '14' || number === '15') {
+            setSrTeams4(() => {
+                return teams4.filter(team => team.value === 4);
+            });
+        }
 
     }
+
+
+
     function changeHandleR2(e) {
         const { value, name } = e.target
         const number = name;
         parseInt(number);
 
         if (number === "0") {
-            srTeams[0].value = +value + 4;
+            srTeams1[0].value = +value + 4;
         } else if (number === "1") {
-            srTeams[1].value = +value + 4;
+            srTeams1[1].value = +value + 4;
         } else if (number === "2") {
-            srTeams[2].value = +value + 4;
+            srTeams2[0].value = +value + 4;
         } else if (number === "3") {
-            srTeams[3].value = +value + 4;
+            srTeams2[1].value = +value + 4;
         } else if (number === "4") {
-            srTeams[4].value = +value + 4;
+            srTeams3[0].value = +value + 4;
         } else if (number === "5") {
-            srTeams[5].value = +value + 4;
+            srTeams3[1].value = +value + 4;
         } else if (number === "6") {
-            srTeams[6].value = +value + 4;
+            srTeams4[0].value = +value + 4;
         } else if (number === "7") {
-            srTeams[7].value = +value + 4;
+            srTeams4[1].value = +value + 4;
         }
-        setTrTeams(() => {
-            return srTeams.filter(team => team.value === 8);
-        })
+
+        if (number === "0" || number ===  "1") {
+            setTrTeams1(() => {
+                return srTeams1.filter(team => team.value === 8);
+            })
+        }
+
+        if (number === "2" ||number === "3") {
+            setTrTeams2(() => {
+                return srTeams2.filter(team => team.value === 8);
+            })
+        }
+
+        if (number === "4" || number ==="5") {
+            setTrTeams3(() => {
+                return srTeams3.filter(team => team.value === 8);
+            })
+        }
+
+        if (number === "6" ||number === "7") {
+            setTrTeams4(() => {
+                return srTeams4.filter(team => team.value === 8);
+            })
+        }
 
     }
+
+    console.log(finalsSetUpW);
+    console.log(finalsSetUpE);
+
 
     function changeHandleR3(e) {
         const { value, name } = e.target
 
         if (name === "0") {
-            trTeams[0].value = +value + 8;
+            trTeams1[0].value = +value + 8;
         } else if (name === "1") {
-            trTeams[1].value =+value + 8;
+            trTeams2[0].value = +value + 8;
         } else if (name === "2") {
-            trTeams[2].value = +value + 8;
+            trTeams3[0].value = +value + 8;
+
         } else if (name === "3") {
-            trTeams[3].value =+value + 8;
+            trTeams4[0].value = +value + 8;
         }
-        setFinals(() => {
-            return trTeams.filter(team => team.value === 12);
-        })
+
+        if (name === '0' || name === '1') {
+
+            setFinals1(() => {
+                return finalsSetUpE.filter(team => team.value === 12)
+            })
+        }
+
+        if (name === '2' || name === '3') {
+
+            setFinals2(() => {
+                return finalsSetUpW.filter(team => team.value === 12)
+            })
+        }
+
+
     }
 
     function changeHandleR4(e) {
         const { value, name } = e.target
 
         if (name === "0") {
-            finals[0].value = +value + 12;
+            finals1[0].value = +value + 12;
         } else if (name === "1") {
-            finals[1].value =+value + 12;
-        } 
+            finals2[0].value = +value + 12;
+        }
     }
 
-    function clickHandle(e) {
+    console.log(teams1, teams2, teams3, teams4, srTeams1, srTeams2, srTeams3, srTeams4, trTeams1, trTeams2, finals1, finals2);
 
-    axios.post("http://localhost:5000/bet", { teams, srTeams, trTeams, finals, userInfo})
-    setRedirect(true);
+    function clickHandle(e) { 
+
+        const teams = [...teams1,...teams2,...teams3,...teams4];
+        const srTeams = [...srTeams1, ...srTeams2, ...srTeams3, ...srTeams4];
+        const trTeams = [...trTeams1,...trTeams2,...trTeams3,...trTeams4];
+        const finals = [...finals1,...finals2]
+
+        axios.post("http://localhost:5000/bet", { teams, srTeams,trTeams,finals, userInfo })
+        setRedirect(true);
     }
 
     return (
@@ -161,49 +248,49 @@ function Bracket() {
                     <form>
                         <div id='first-round-w'>
                             <ul className="b-ul">
-                                <Team team={teams[0].name} value={teams[0].value} index="0" changeHandle={changeHandleR1} />
-                                <Team team={teams[1].name} value={teams[1].value} index="1" changeHandle={changeHandleR1} />
+                                <Team team={teams1[0].name} value={teams1[0].value} index="0" changeHandle={changeHandleR1} />
+                                <Team team={teams1[1].name} value={teams1[1].value} index="1" changeHandle={changeHandleR1} />
                             </ul>
                             <ul className="b-ul">
-                                <Team team={teams[2].name} value={teams[2].value} index="2" changeHandle={changeHandleR1} />
-                                <Team team={teams[3].name} value={teams[3].value} index="3" changeHandle={changeHandleR1} />
+                                <Team team={teams1[2].name} value={teams1[2].value} index="2" changeHandle={changeHandleR1} />
+                                <Team team={teams1[3].name} value={teams1[3].value} index="3" changeHandle={changeHandleR1} />
                             </ul>
                             <ul className="b-ul">
-                                <Team team={teams[4].name} value={teams[4].value} index="4" changeHandle={changeHandleR1} />
-                                <Team team={teams[5].name} value={teams[5].value} index="5" changeHandle={changeHandleR1} />
+                                <Team team={teams2[0].name} value={teams2[0].value} index="4" changeHandle={changeHandleR1} />
+                                <Team team={teams2[1].name} value={teams2[1].value} index="5" changeHandle={changeHandleR1} />
                             </ul>
                             <ul className="b-ul">
-                                <Team team={teams[6].name} value={teams[6].value} index="6" changeHandle={changeHandleR1} />
-                                <Team team={teams[7].name} value={teams[7].value} index="7" changeHandle={changeHandleR1} />
+                                <Team team={teams2[2].name} value={teams2[2].value} index="6" changeHandle={changeHandleR1} />
+                                <Team team={teams2[3].name} value={teams2[3].value} index="7" changeHandle={changeHandleR1} />
                             </ul>
                         </div>
                         <div id="second-round-w">
                             <ul className="b-ul">
-                                <li className="b-li">{srTeams[0] ? <SrTeam team={srTeams[0].name} value={srTeams[0].value} index="0" changeHandle={changeHandleR2} /> : "-"} </li>
-                                <li className="b-li">{srTeams[1] ? <SrTeam team={srTeams[1].name} value={srTeams[1].value} index="1" changeHandle={changeHandleR2} /> : "-"}</li>
+                                <li className="b-li">{srTeams1[0] ? <SrTeam team={srTeams1[0].name} value={srTeams1[0].value} index="0" changeHandle={changeHandleR2} /> : "-"} </li>
+                                <li className="b-li">{srTeams1[1] ? <SrTeam team={srTeams1[1].name} value={srTeams1[1].value} index="1" changeHandle={changeHandleR2} /> : "-"}</li>
                             </ul>
                             <br />
                             <br />
                             <br />
                             <ul className="b-ul">
-                                <li className="b-li">{srTeams[2] ? <SrTeam team={srTeams[2].name} value={srTeams[2].value} index="2" changeHandle={changeHandleR2} /> : "-"}</li>
-                                <li className="b-li">{srTeams[3] ? <SrTeam team={srTeams[3].name} value={srTeams[3].value} index="3" changeHandle={changeHandleR2} /> : "-"}</li>
+                                <li className="b-li">{srTeams2[0] ? <SrTeam team={srTeams2[0].name} value={srTeams2[0].value} index="2" changeHandle={changeHandleR2} /> : "-"}</li>
+                                <li className="b-li">{srTeams2[1] ? <SrTeam team={srTeams2[1].name} value={srTeams2[1].value} index="3" changeHandle={changeHandleR2} /> : "-"}</li>
                             </ul>
                         </div>
 
 
                         <div id="third-round-w">
                             <ul className="b-ul">
-                                <li className="b-li">{trTeams[0] ? <TrTeam team={trTeams[0].name} value={trTeams[0].value} index="0" changeHandle={changeHandleR3} /> : "-"}</li>
-                                <li className="b-li">{trTeams[1] ? <TrTeam team={trTeams[1].name} value={trTeams[1].value} index="1" changeHandle={changeHandleR3} /> : "-"}</li>
+                                <li className="b-li">{trTeams1[0] ? <TrTeam team={trTeams1[0].name} value={trTeams1[0].value} index="0" changeHandle={changeHandleR3} /> : "-"}</li>
+                                <li className="b-li">{trTeams2[0] ? <TrTeam team={trTeams2[0].name} value={trTeams2[0].value} index="1" changeHandle={changeHandleR3} /> : "-"}</li>
                             </ul>
                         </div>
 
                         <div id="finals">
                             <ul className="b-ul">
                                 <h3 className="f-h3">The Finals</h3>
-                                <li className="b-li">{finals[0] ? <FinalsTeam team={finals[0].name} value={finals[0].value} index="0" changeHandle={changeHandleR4} /> : "-"}</li>
-                                <li className="b-li">{finals[1] ? <FinalsTeam team={finals[1].name} value={finals[1].value} index="1" changeHandle={changeHandleR4} /> : "-"}</li>
+                                <li className="b-li">{finals1[0] ? <FinalsTeam team={finals1[0].name} value={finals1[0].value} index="0" changeHandle={changeHandleR4} /> : "-"}</li>
+                                <li className="b-li">{finals2[0] ? <FinalsTeam team={finals2[0].name} value={finals2[0].value} index="1" changeHandle={changeHandleR4} /> : "-"}</li>
                             </ul>
                             <button onClick={clickHandle} type="submit" className="btn btn-success btn-lg btn-primary bet-btn"> Submit <FontAwesomeIcon icon={faCheckCircle} /></button>
                         </div>
@@ -212,41 +299,41 @@ function Bracket() {
 
                         <div id="third-round-e">
                             <ul className="b-ul">
-                                <li className="b-li">{trTeams[2] ? <TrTeam team={trTeams[2].name} value={trTeams[2].value} index="2" changeHandle={changeHandleR3} /> : "-"}</li>
-                                <li className="b-li">{trTeams[3] ? <TrTeam team={trTeams[3].name} value={trTeams[3].value} index="3" changeHandle={changeHandleR3} /> : "-"}</li>
+                                <li className="b-li">{trTeams3[0] ? <TrTeam team={trTeams3[0].name} value={trTeams3[0].value} index="2" changeHandle={changeHandleR3} /> : "-"}</li>
+                                <li className="b-li">{trTeams4[0] ? <TrTeam team={trTeams4[0].name} value={trTeams4[0].value} index="3" changeHandle={changeHandleR3} /> : "-"}</li>
                             </ul>
                         </div>
 
                         <div id="second-round-w">
                             <ul className="b-ul">
-                                <li className="b-li">{srTeams[4] ? <SrTeam team={srTeams[4].name} value={srTeams[4].value} index="4" changeHandle={changeHandleR2} /> : "-"}</li>
-                                <li className="b-li">{srTeams[5] ? <SrTeam team={srTeams[5].name} value={srTeams[5].value} index="5" changeHandle={changeHandleR2} /> : "-"}</li>
+                                <li className="b-li">{srTeams3[0] ? <SrTeam team={srTeams3[0].name} value={srTeams3[0].value} index="4" changeHandle={changeHandleR2} /> : "-"}</li>
+                                <li className="b-li">{srTeams3[1] ? <SrTeam team={srTeams3[1].name} value={srTeams3[1].value} index="5" changeHandle={changeHandleR2} /> : "-"}</li>
                             </ul>
                             <br />
                             <br />
                             <br />
                             <ul className="b-ul">
-                                <li className="b-li">{srTeams[6] ? <SrTeam team={srTeams[6].name} value={srTeams[6].value} index="6" changeHandle={changeHandleR2} /> : "-"}</li>
-                                <li className="b-li">{srTeams[7] ? <SrTeam team={srTeams[7].name} value={srTeams[7].value} index="7" changeHandle={changeHandleR2} /> : "-"}</li>
+                                <li className="b-li">{srTeams4[0] ? <SrTeam team={srTeams4[0].name} value={srTeams4[0].value} index="6" changeHandle={changeHandleR2} /> : "-"}</li>
+                                <li className="b-li">{srTeams4[1] ? <SrTeam team={srTeams4[1].name} value={srTeams4[1].value} index="7" changeHandle={changeHandleR2} /> : "-"}</li>
                             </ul>
                         </div>
 
                         <div id='first-round-e'>
                             <ul className="b-ul">
-                                <Team team={teams[8].name} value={teams[8].value} index="8" changeHandle={changeHandleR1} />
-                                <Team team={teams[9].name} value={teams[9].value} index="9" changeHandle={changeHandleR1} />
+                                <Team team={teams3[0].name} value={teams3[0].value} index="8" changeHandle={changeHandleR1} />
+                                <Team team={teams3[1].name} value={teams3[1].value} index="9" changeHandle={changeHandleR1} />
                             </ul>
                             <ul className="b-ul">
-                                <Team team={teams[10].name} value={teams[10].value} index="10" changeHandle={changeHandleR1} />
-                                <Team team={teams[11].name} value={teams[11].value} index="11" changeHandle={changeHandleR1} />
+                                <Team team={teams3[2].name} value={teams3[2].value} index="10" changeHandle={changeHandleR1} />
+                                <Team team={teams3[3].name} value={teams3[3].value} index="11" changeHandle={changeHandleR1} />
                             </ul>
                             <ul className="b-ul">
-                                <Team team={teams[12].name} value={teams[12].value} index="12" changeHandle={changeHandleR1} />
-                                <Team team={teams[13].name} value={teams[13].value} index="13" changeHandle={changeHandleR1} />
+                                <Team team={teams4[0].name} value={teams4[0].value} index="12" changeHandle={changeHandleR1} />
+                                <Team team={teams4[1].name} value={teams4[1].value} index="13" changeHandle={changeHandleR1} />
                             </ul>
                             <ul className="b-ul">
-                                <Team team={teams[14].name} value={teams[14].value} index="14" changeHandle={changeHandleR1} />
-                                <Team team={teams[15].name} value={teams[15].value} index="15" changeHandle={changeHandleR1} />
+                                <Team team={teams4[2].name} value={teams4[2].value} index="14" changeHandle={changeHandleR1} />
+                                <Team team={teams4[3].name} value={teams4[3].value} index="15" changeHandle={changeHandleR1} />
                             </ul>
                         </div>
                     </form>

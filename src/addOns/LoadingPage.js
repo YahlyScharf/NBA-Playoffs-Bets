@@ -33,7 +33,7 @@ function LoadingPage() {
         setTimeout(() => {
             localStorage.clear();
             setRedirect(true)
-        },1100)
+        },1400)
     }
 
     return (

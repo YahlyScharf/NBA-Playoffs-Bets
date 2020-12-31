@@ -71,11 +71,11 @@ body {
   .bg-green-100 {
     background-color: #f0fff4;
   }
-
+/* 
 
   .text-xs {
     font-size: 0.75rem;
-  }
+  } */
 
   .text-red-500 {
     color: #f56565;
@@ -118,5 +118,12 @@ body {
     font-weight: bolder;
   }
 
+  .not-sh {
+    color:black;
+    font-weight: bolder;
+    font-size: 25px;
+  }
 
-
+  .a{
+margin-right: 10px;
+  }

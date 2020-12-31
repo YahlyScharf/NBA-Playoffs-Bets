@@ -11,7 +11,7 @@ function NavBar () {
 
             <div className="container">
 
-                <div className="collapse navbar-collapse not" id="navbarTogglerDemo02">
+                <div className="collapse navbar-collapse not a" id="navbarTogglerDemo02">
                     <ul className="navbar-nav ml-auto ">
                         <li className="nav-item ">
                             <Link className="nav-link " to={"/dashboard"}>My Bet <FontAwesomeIcon icon={faUser} /></Link>

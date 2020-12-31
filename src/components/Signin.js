@@ -8,17 +8,14 @@ import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-
-
-
-
+import Loader from 'react-loader-spinner';
 
 function SignIn() {
     const authContext = useContext(AuthContext);
     const [redirectOnLogin, setRedirectOnLogin] = useState(false);
     const [signInError, setSignInError] = useState(false);
     const [signInSuccess, setSignInSuccess] = useState(false);
+    const [loading, setLoading] = useState(false)
     const [signInErrorText, setSignInErrorText] = useState();
     const [signInSuccessText, setSignInSuccessText] = useState();
 
@@ -54,19 +51,16 @@ function SignIn() {
             e.preventDefault();
             const { data } = await axios.post("http://localhost:5000/signin", user)
             authContext.setAuthState(data);
-            const hasBetCon = data.userInfo.hasBet;
             setSignInError(false);
-            setSignInSuccess(true)
             setSignInSuccessText(data.message);
-            if (hasBetCon === false) {
-                setTimeout(() => {
-                    setRedirectOnLogin(false)
-                }, 2500)
-            }
+            setLoading(true)
+            setTimeout(() => {
+                setLoading(false)
+                setSignInSuccess(true)
+            }, 1100)
             setTimeout(() => {
                 setRedirectOnLogin(true)
-            }, 2500)
-
+            },2000)
         } catch (error) {
             const { data } = error.response;
             setSignInError(true);
@@ -88,12 +82,16 @@ function SignIn() {
                     <br />
                     <br />
                     <div>
-                    <p className="forgot-password text-middle not-h">
-                            Not registered? <Link to={"/signup"}>Sign Up </Link>
-                        </p>
-                        <h3 className="not-h">Sign In</h3>
+
+                        <h3 className="not-sh" >Sign In</h3>
                         {signInError && <FormError text={signInErrorText} />}
-                        {signInSuccess&& <FormSuccess text={signInSuccessText} />}
+                        {loading && <Loader
+                            type="Oval"
+                            color="black"
+                            height={50}
+                            width={50}
+                        />}
+                        {signInSuccess && <FormSuccess text={signInSuccessText} />}
                         <div className="form-group">
                             <label className="not" htmlFor="email">Email</label>
                             <br />
@@ -109,7 +107,9 @@ function SignIn() {
                         <button type="submit" onClick={clickHandle} className="btn btn-primary btn-success">Login <FontAwesomeIcon icon={faSignInAlt} /></button>
                         <br />
                         <br />
-                        
+
+
+
                     </div>
                 </form>
             </div>

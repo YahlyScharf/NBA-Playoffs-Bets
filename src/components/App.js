@@ -10,23 +10,23 @@ import SignUp from './Signup'
 import Dashboard from './Dashboard';
 import Standings from "./Standings"
 import NewBet from './NewBet'
-import Transition from '../addOns/Transition'
 import LoadingPage from '../addOns/LoadingPage';
+import UserBet from './UserBet';
+import Home from './Home';
 
 function App() {
 
   const AppRoutes = () => {
     return (
       <Switch>
-        <Route exact path='/' component={SignIn} />
+        <Route exact path='/' component={Home} />
         <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
         <Route path="/..." component={LoadingPage} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/placeBet" component={Transition} />
         <Route path="/place-bet" component={NewBet} />
         <Route path="/standings" component={Standings} />
-       
+        <Route path="/user-bet/:id" component={UserBet} />
       </Switch>
     );
   }
