@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const FormError = ({ text }) => (
-  <section className=" mt-8 text-center p-2 mb-2 rounded border border-red-600 bg-red-100">
+  <section className=" mt-8 text-center p-2 mb-2 rounded border border-red-600 bg-red-100 mar-b">
     <p className="text-xs text-red-500">{text}</p>
   </section>
 );

@@ -4,7 +4,7 @@ import Loader from 'react-loader-spinner';
 function UserLoading(props) {
     return (
         <Loader
-                className="load"
+                className="loaditer"
                 type="Oval"
                 color="black"
                 height={130}

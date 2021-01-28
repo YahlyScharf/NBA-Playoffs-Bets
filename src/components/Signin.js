@@ -60,7 +60,7 @@ function SignIn() {
             }, 1100)
             setTimeout(() => {
                 setRedirectOnLogin(true)
-            },2000)
+            },2200)
         } catch (error) {
             const { data } = error.response;
             setSignInError(true);
@@ -79,32 +79,37 @@ function SignIn() {
                 <NavBar />
 
                 <form>
-                    <br />
-                    <br />
-                    <div>
-
-                        <h3 className="not-sh" >Sign In</h3>
-                        {signInError && <FormError text={signInErrorText} />}
+                    {signInError && <FormError text={signInErrorText} />}
                         {loading && <Loader
                             type="Oval"
                             color="black"
                             height={50}
                             width={50}
+                            className="loadit"
                         />}
                         {signInSuccess && <FormSuccess text={signInSuccessText} />}
+                        <br/>
+                        <br/>
+                        <br/>
+                    <div className="form-outer">
+
+                        <h3>Log In To Your Account</h3>
+                        
                         <div className="form-group">
-                            <label className="not" htmlFor="email">Email</label>
+                            <label htmlFor="email">Email</label>
                             <br />
                             <input type="email" onChange={changeHandle} name="email" id="email" className="form-control-lg" placeholder="Enter email" />
                         </div>
 
                         <div className="form-group">
-                            <label className="not" htmlFor="password">Password</label>
+                            <label htmlFor="password">Password</label>
                             <br />
                             <input type="password" onChange={changeHandle} name="password" id="password" className="form-control-lg" placeholder="Enter password" />
                         </div>
+                        
+                        <br/>
 
-                        <button type="submit" onClick={clickHandle} className="btn btn-primary btn-success">Login <FontAwesomeIcon icon={faSignInAlt} /></button>
+                        <button type="submit" onClick={clickHandle} className="btn btn-outline-light but-s">Log In</button>
                         <br />
                         <br />
 

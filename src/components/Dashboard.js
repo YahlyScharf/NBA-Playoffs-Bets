@@ -13,9 +13,8 @@ function Dashboard() {
     const {
         userInfo
     } = authContext.authState;
-   
-   
-    
+
+     
     
         return (
             
@@ -24,7 +23,7 @@ function Dashboard() {
             
             <div>
                 <NavBar />
-                <h1 className="text-left-h1">Hello, {userInfo.firstName}!</h1>
+                <h1 className="text-left-h1">  Hello {userInfo.firstName}!</h1>
                 <Bracket />
             </div>
             </>

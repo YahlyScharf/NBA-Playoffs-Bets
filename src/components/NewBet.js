@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Bracket from './Bracket'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -32,7 +32,7 @@ function NewBet() {
             <div>
                 {userInfo.hasBet ? <Redirect to="/dashboard" /> : null}
                 {show ? <div>
-                    <Alert show={show} variant="info" className='si-alert'>
+                    <Alert show={show} variant="info" className='form-outer-2'>
                         <Alert.Heading>Welcome {userInfo.firstName} ,Nice to have you here!</Alert.Heading>
                         <br />
                         <p>Before you start betting, there are a few important things to keep in mind: </p>
@@ -43,16 +43,16 @@ function NewBet() {
                         </ul>
                         <hr />
                         <div className="d-flex justify-content-end">
-                            <Button onClick={clickHandle} variant="outline-info">
+                            <Button onClick={clickHandle} variant="outline-light">
                                 Got it <FontAwesomeIcon icon={faThumbsUp} />
                             </Button>
                         </div>
                     </Alert>
                 </div>
                     : <>  <h1 className="text-left-h1">Place Your Bet</h1>
-            { showAlret ? <Alert variant="info" onClose={() => setShowAlert(false)} dismissible className='info-alert'>
+            { showAlret ? <Alert variant="primary" onClose={() => setShowAlert(false)} dismissible className='info-alert'>
                     This is where you place your bet! Please follow the instructions mentioned before.
-                Need a reminder? <Alert.Link onClick={linkClickHandle}>Click Here.</Alert.Link>
+                Need a reminder? <Link className="alert-l" onClick={linkClickHandle}>Click Here.</Link>
                 </Alert> : null}
                 <Bracket /> </>}
 

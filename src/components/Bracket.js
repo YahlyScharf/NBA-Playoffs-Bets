@@ -11,6 +11,8 @@ import { AuthContext } from '../context/AuthContext';
 
 
 function Bracket() {
+
+    
     const authContext = useContext(AuthContext);
     const {
         userInfo
@@ -175,9 +177,6 @@ function Bracket() {
 
     }
 
-    console.log(finalsSetUpW);
-    console.log(finalsSetUpE);
-
 
     function changeHandleR3(e) {
         const { value, name } = e.target
@@ -292,7 +291,11 @@ function Bracket() {
                                 <li className="b-li">{finals1[0] ? <FinalsTeam team={finals1[0].name} value={finals1[0].value} index="0" changeHandle={changeHandleR4} /> : "-"}</li>
                                 <li className="b-li">{finals2[0] ? <FinalsTeam team={finals2[0].name} value={finals2[0].value} index="1" changeHandle={changeHandleR4} /> : "-"}</li>
                             </ul>
-                            <button onClick={clickHandle} type="submit" className="btn btn-success btn-lg btn-primary bet-btn"> Submit <FontAwesomeIcon icon={faCheckCircle} /></button>
+
+                            { finals1.length === 1 && finals2.length === 1 ?  
+                                <button onClick={clickHandle} type="submit" className="btn btn-success btn-lg bet-btn"> Submit <FontAwesomeIcon icon={faCheckCircle} /></button> : null
+                            }
+                            
                         </div>
 
 

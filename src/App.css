@@ -1,8 +1,37 @@
 body {
-   background-image: url("https://cdn.vox-cdn.com/thumbor/yT88BoG29xZ_WSgyuIROBDnSXvY=/1400x1050/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/19725578/TheRinger_Top25NBAPlayers_2.png");
-    background-size:cover;
+    background-image: url("./images/nba-background.jpg");
+    background-position:cover;
     font-weight:500;
+    font-family: sans-serif;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
+  
+   /* Full page responsive background image */
+img.bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+
+  /* Set up positioning */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+ /* Full page background color */
+div.admin-bg {
+  /* Set rules to fill background */
+  min-height: 100%;
+  min-width: 1024px;
+}
   
   .App {
     text-align: center;
@@ -158,15 +187,13 @@ body {
     border-style: hidden;
     font-weight: 800;
   }
+
+
 .bet-btn {
-margin-top: 150%;
 font-weight: 700;
+border-radius: 100px;
 }
 
-:hover.bet-btn {
-  background-color: white;
-  color: green;
-  }
 
 
 .pop-up-div {
@@ -199,17 +226,77 @@ margin-top: 75px;
 
  .info-alert {
   width: 75%;
-  margin-left:12%
+  margin-left:12%;
+  background-color: black;
+  opacity: 90%;
+  color: white;
  }
 
- .load {
-   margin-top: 21%;
+ .alert-l {
+    color: white(31, 78, 131);
  }
 
+
+
+.load {
+padding-top: 100px;
+}
  .loadi {
   margin-top: 20%;
 }
+.loadit {
+  margin-top: 3.5%;
+}
+.loaditer {
+  margin-top: 20%;
+}
 
+.loader {
+margin-top:13%;
+margin-left: 28%;
+width: 600px;
+height: 380px;
+background-color: white;
+opacity: 88%;
+border-radius: 8px;
+border-color: black;
+border-style: solid;
+border-width: 1px;
+
+}
+
+.loader-h {
+  margin-top:3%;
+  }
+
+  .loader-l-h {
+    color:black;
+    font-weight: bolder;
+    font-size: 15px;
+    margin-right:1%;
+    margin-top: 8%;
+    }
+
+  .loader-v {
+    padding-top:10%;
+} 
+
+.loder-p {
+  padding-top: 20px;
+  color:black;
+  font-weight: bolder;
+  font-size: 15px;
+}
+/* .loder-btn {
+ margin-bottom:5%;
+ margin-left: 25%;
+} */
+
+.not {
+  color:black;
+  font-weight: bolder;
+  font-size: 15px;
+}
  .load-button {
   margin-top: 21%;
   width: 500px;
@@ -224,25 +311,107 @@ margin-top: 75px;
   /* color: rgb(19, 20, 20); */
   color: black;
   font-weight: 900;
-  font-size:55px;
-  float: left;
-  margin-left: 2%;
-  margin-top: 18%;
+  font-size: 35px;
+  margin-right: 22%;
+  margin-top: 1%;
 }
 
 .home-p {
   color: black;
-  font-weight: 800;
-  font: 20px;
-  float: left;
-  margin-left: 7% ;
+  font-weight: 600;
+  margin-left: 28%;
+  width:280px;
+}
+
+.left-pic {
+  width: 600px;
+  height:420px;
+  margin-left: 5%;
+  margin-top: 80px;
+  background-color: black;
+  opacity: 90%;
+  padding-top: 30px;
+  border-radius: 8px;
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  color: white;
 }
 
 .home-but {
   float: right;
-  margin-right: 20%;
-  margin-top: 6%;
+  margin-right: 55%;
+  margin-top: 39%;
   padding: 20px 40px;
   font-size: 20px;
   border-radius: 10px;
+  border-radius: 100px;
+}
+
+.nav-but-o{
+  width:130px;
+  border-radius: 100px;
+  font-weight: 500;
+  margin-right: 10px;
+  margin-top: 25px;
+}
+.nav-but-r{
+  width:130px;
+  border-radius: 100px;
+  font-weight: 500;
+  border-color: white;
+  margin-right: 10px;
+  color: white;
+  margin-top: 25px;
+}
+
+.navBar-logo{
+margin-right: 100px;
+}
+.but-s{
+  width:130px;
+  border-radius: 100px;
+  font-weight: 500;
+  -bgin-right: 10px;
+  color: white;
+}
+
+
+.navi {
+  color: black;
+  text-decoration: none;
+}
+.navi-boi {
+  background-color: rgb(230, 225, 225);
+  opacity: 90%;
+  text-decoration: none;
+}
+
+.form-outer{
+  background-color: black;
+  opacity: 90%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: absolute;
+  left:35.2%;
+	top:17%;
+  width: 400px;
+  border-radius: 8px;
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+  color: white;
+}
+
+.form-outer-2{
+  background-color: black;
+  opacity: 87%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  position: absolute;
+  left:28%;
+	top:17%;
+  width: 600px;
+  border-radius: 5px;
+  color: white;
 }

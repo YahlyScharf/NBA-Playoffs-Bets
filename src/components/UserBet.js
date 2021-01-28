@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './../context/AuthContext';
-import NavBar from './NavbarDashboard';
+import NavBar from './UserBetNavbar';
 import { Redirect, useParams } from 'react-router-dom';
 import axios from 'axios'
 import UserLoading from "../addOns/UserLoading";

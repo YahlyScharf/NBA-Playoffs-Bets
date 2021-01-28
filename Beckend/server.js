@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const { hash } = require('bcrypt');
 const jwtDecode = require('jwt-decode');
-const uri = process.env.URI
+const _ = require('lodash');
+const uri = process.env.URI;
 const secret = process.env.SECRET;
 const {
     createToken,
@@ -93,8 +94,8 @@ app.post("/signup", async (req, res) => {
         );
 
         const userData = {
-            firstName: firstName,
-            lastName: lastName,
+            firstName: _.capitalize(firstName),
+            lastName:_.capitalize(lastName),
             email: email.toLowerCase(),
             password: hashedPassword,
             role: 'admin',
@@ -285,6 +286,6 @@ app.post("/bet", (req, res) => {
 
 });
 
-app.listen(5000 || process.env.PORT, () => {
+app.listen(process.env.PORT || 5000 , () => {
     console.log('Server started on port 5000');
 });

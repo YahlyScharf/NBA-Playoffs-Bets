@@ -7,7 +7,7 @@ function FormSuccess ({ text }) {
 
   return (
   <div>
- <section className="mt-8 text-center p-2 mb-2 rounded border border-green-600 bg-green-100">
+ <section className="mt-8 text-center p-2 mb-2 rounded border border-green-600 bg-green-100 mar-b">
      <FontAwesomeIcon icon={faCheckCircle} />
     <p className="text-xs text-green-500">{text}</p>
   </section> 
