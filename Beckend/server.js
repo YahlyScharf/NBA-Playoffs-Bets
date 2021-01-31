@@ -81,6 +81,10 @@ const userSchema = new Schema({
 
 const User = mongoose.model('user', userSchema);
 
+app.get("/signup", (req,res) => {
+    res.sendFile("../src/components/Signup.js")
+})
+
 app.post("/signup", async (req, res) => {
 
     try {

@@ -16,32 +16,20 @@ import Home from './Home';
 
 function App() {
 
-  const AppRoutes = () => {
-    return (
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route path="/signin" component={SignIn} />
-        <Route path="/signup" component={SignUp} />
-        <Route path="/..." component={LoadingPage} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/place-bet" component={NewBet} />
-        <Route path="/standings" component={Standings} />
-        <Route path="/user-bet/:id" component={UserBet} />
-      </Switch>
-    );
-  }
-
   return (
     <Router>
       <AuthProvider>
         <FetchProvider>
-          <div className="App">
+          <div >
 
-            <div className="auth-wrapper">
-              <div className="auth-inner">
-                <AppRoutes />
-              </div>
-            </div>
+            <Route exact path='/' component={Home} />
+            <Route path="/signin" component={SignIn} />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/..." component={LoadingPage} />
+            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/place-bet" component={NewBet} />
+            <Route path="/standings" component={Standings} />
+            <Route path="/user-bet/:id" component={UserBet} />
           </div>
         </FetchProvider>
 
