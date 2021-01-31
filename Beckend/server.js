@@ -2,16 +2,13 @@ require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const path = require('path');
 const jwtDecode = require('jwt-decode');
 const _ = require('lodash');
 const uri = process.env.URI;
-const secret = process.env.SECRET;
 const {
     createToken,
     hashPassword,
     verifyPassword,
-    requireAdmin
 } = require("./util.js");
 
 const app = express();
@@ -276,7 +273,7 @@ app.post("/bet", (req, res) => {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log('Nughty Nughty!');
+                    console.log('Nuaghty Nuaghty!');
                 }
             })
         }
