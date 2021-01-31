@@ -67,7 +67,7 @@ function SignUp() {
         try {
             e.preventDefault();
 
-            const { data } = await axios.post("http://localhost:5000/signup", user);
+            const { data } = await axios.post("https://nba-playoffbets.herokuapp.com/signup", user);
             authContext.setAuthState(data);
             setSignupSuccess(true);
             setSignupError(false);

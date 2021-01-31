@@ -12,7 +12,7 @@ function TableGen() {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:5000/users")
+        axios.get("https://nba-playoffbets.herokuapp.com/users")
             .then(response => {
                 setUsers([...response.data])
             });

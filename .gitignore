@@ -1,6 +1,5 @@
 
 # Logs
-Beckend
 logs
 *.log
 npm-debug.log*

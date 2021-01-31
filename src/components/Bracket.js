@@ -263,7 +263,7 @@ function Bracket() {
         });
 
     
-            axios.post("http://localhost:5000/bet", { teams, srTeams, trTeams, finals, userInfo })
+            axios.post("https://nba-playoffbets.herokuapp.com/bet", { teams, srTeams, trTeams, finals, userInfo })
             setRedirect(true);
       
 

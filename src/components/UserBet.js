@@ -14,7 +14,7 @@ function UserBet() {
     const [userInfo, setUserInfo] = useState()
 
     useEffect(() => {
-        axios.post("http://localhost:5000/user", { id })
+        axios.post("https://nba-playoffbets.herokuapp.com/user", { id })
             .then(res => {
                 setUserInfo(res.data)
             })
