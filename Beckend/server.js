@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const { hash } = require('bcrypt');
+const path = require('path');
 const jwtDecode = require('jwt-decode');
 const _ = require('lodash');
 const uri = process.env.URI;
@@ -24,7 +24,7 @@ app.use(express.json())
 
 
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect( process.env.MONGODB_URI || uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -276,7 +276,7 @@ app.post("/bet", (req, res) => {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log('Great Success!');
+                    console.log('Nughty Nughty!');
                 }
             })
         }
@@ -286,6 +286,7 @@ app.post("/bet", (req, res) => {
 
 });
 
-app.listen(process.env.PORT || 5000 , () => {
+
+app.listen( process.env.PORT || 5000 , () => {
     console.log('Server started on port 5000');
 });

@@ -184,10 +184,20 @@ div.admin-bg {
 
   .b-ta {
     width:20px;
-    border-style: hidden;
+    height: 22px;
+    /* border-style: bold; */
+    border-width: 1px;
+    border-color: black(128, 127, 192);
+    border-radius: 5px;
     font-weight: 800;
+  
   }
-
+.toast {
+  width: 700px;
+  margin-left:35%;
+  background-color: black;
+  color: white;
+}
 
 .bet-btn {
 font-weight: 700;

@@ -3,7 +3,7 @@ import {AuthContext} from '../context/AuthContext'
 import NavBar from "./NavbarDashboard";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faEye} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserLoading from "../addOns/UserLoading";
 
@@ -77,7 +77,7 @@ function TableGen() {
                                     <th>{index + 1}</th>
                                     <th>{user.firstName} {user.lastName}</th>
                                     <th>{user.score}</th>
-                                    <th>{<Link to={`/user-bet/${user._id}`} className="bet-link"><FontAwesomeIcon color="green" icon={faPlusCircle} /></Link>}</th>
+                                    <th>{<Link to={`/user-bet/${user._id}`} className="bet-link"><FontAwesomeIcon color="green" icon={faEye} /></Link>}</th>
                                 </tr>
                             );
                             }

@@ -8,11 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
+import Toast from 'react-bootstrap/Toast'
 
 
 function Bracket() {
 
-    
+    const [show,setShow] = useState(false);
     const authContext = useContext(AuthContext);
     const {
         userInfo
@@ -57,8 +58,8 @@ function Bracket() {
     const [trTeams3, setTrTeams3] = useState([]);
     const [trTeams4, setTrTeams4] = useState([]);
 
-    const finalsSetUpE = [...trTeams1,...trTeams2];
-    const finalsSetUpW = [...trTeams3,...trTeams4];
+    const finalsSetUpE = [...trTeams1, ...trTeams2];
+    const finalsSetUpW = [...trTeams3, ...trTeams4];
 
     const [finals1, setFinals1] = useState([]);
     const [finals2, setFinals2] = useState([]);
@@ -151,25 +152,25 @@ function Bracket() {
             srTeams4[1].value = +value + 4;
         }
 
-        if (number === "0" || number ===  "1") {
+        if (number === "0" || number === "1") {
             setTrTeams1(() => {
                 return srTeams1.filter(team => team.value === 8);
             })
         }
 
-        if (number === "2" ||number === "3") {
+        if (number === "2" || number === "3") {
             setTrTeams2(() => {
                 return srTeams2.filter(team => team.value === 8);
             })
         }
 
-        if (number === "4" || number ==="5") {
+        if (number === "4" || number === "5") {
             setTrTeams3(() => {
                 return srTeams3.filter(team => team.value === 8);
             })
         }
 
-        if (number === "6" ||number === "7") {
+        if (number === "6" || number === "7") {
             setTrTeams4(() => {
                 return srTeams4.filter(team => team.value === 8);
             })
@@ -219,17 +220,53 @@ function Bracket() {
         }
     }
 
+
     console.log(teams1, teams2, teams3, teams4, srTeams1, srTeams2, srTeams3, srTeams4, trTeams1, trTeams2, finals1, finals2);
 
-    function clickHandle(e) { 
+    function clickHandle(e) {
 
-        const teams = [...teams1,...teams2,...teams3,...teams4];
+        const teams = [...teams1, ...teams2, ...teams3, ...teams4];
         const srTeams = [...srTeams1, ...srTeams2, ...srTeams3, ...srTeams4];
-        const trTeams = [...trTeams1,...trTeams2,...trTeams3,...trTeams4];
-        const finals = [...finals1,...finals2]
+        const trTeams = [...trTeams1, ...trTeams2, ...trTeams3, ...trTeams4];
+        const finals = [...finals1, ...finals2]
 
-        axios.post("http://localhost:5000/bet", { teams, srTeams,trTeams,finals, userInfo })
-        setRedirect(true);
+        const teamsCheck = teams.map(team => {
+            if (team.value >= 0) {
+                return true
+            } else {
+                return false
+            }
+        });
+
+        const srTeamsCheck = srTeams.map(team => {
+            if (team.value >= 4) {
+                return true
+            } else {
+                return false
+            }
+        });
+
+        const trTeamsCheck = trTeams.map(team => {
+            if (team.value >= 8) {
+                return true
+            } else {
+                return false
+            }
+        });
+
+        const FinalsCheck = finals.map(team => {
+            if (team.value >= 12) {
+                return true
+            } else {
+                return false
+            }
+        });
+
+    
+            axios.post("http://localhost:5000/bet", { teams, srTeams, trTeams, finals, userInfo })
+            setRedirect(true);
+      
+
     }
 
     return (
@@ -242,6 +279,10 @@ function Bracket() {
 
 
             <div>
+                <Toast className="toast" onClose={() => setShow(false)} show={show} delay={4000} autohide>
+
+                    <Toast.Body>Opps! Something went wrong... Please recheck your bet.</Toast.Body>
+                </Toast>
 
                 <div id="bracket">
                     <form>
@@ -292,10 +333,10 @@ function Bracket() {
                                 <li className="b-li">{finals2[0] ? <FinalsTeam team={finals2[0].name} value={finals2[0].value} index="1" changeHandle={changeHandleR4} /> : "-"}</li>
                             </ul>
 
-                            { finals1.length === 1 && finals2.length === 1 ?  
+                            {finals1.length === 1 && finals2.length === 1 && trTeams1.length === 1 && trTeams2.length === 1 && trTeams3.length === 1 && trTeams4.length === 1 && srTeams1.length === 2 && srTeams2.length === 2 && srTeams3.length === 2 && srTeams4.length === 2 ?
                                 <button onClick={clickHandle} type="submit" className="btn btn-success btn-lg bet-btn"> Submit <FontAwesomeIcon icon={faCheckCircle} /></button> : null
                             }
-                            
+
                         </div>
 
 
