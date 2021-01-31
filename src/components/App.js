@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { AuthProvider, AuthContext } from '../context/AuthContext';
 import { FetchProvider } from '../context/FetchContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "../app.css";
+import "../index.css";
 import * as jwt from 'jsonwebtoken';
 import SignIn from './Signin';
 import SignUp from './Signup'
