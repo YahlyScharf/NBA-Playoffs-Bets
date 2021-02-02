@@ -46,13 +46,15 @@ function SignIn() {
 
 
 
-    async function clickHandle(e) {
+ function clickHandle(e) {
         try {
             e.preventDefault();
-            const { data } = await axios.post("https://nba-playoffbets.herokuapp.com/signin", user)
-            authContext.setAuthState(data);
+            axios.post("https://nba-playoffbets.herokuapp.com/signin", user)
+            .then (res => {
+                  setSignInSuccessText(res.data.message);
+                  authContext.setAuthState(res.data);
+            })
             setSignInError(false);
-            setSignInSuccessText(data.message);
             setLoading(true)
             setTimeout(() => {
                 setLoading(false)

@@ -63,15 +63,17 @@ function SignUp() {
 
     }
 
-    async function clickHandle(e) {
+     function clickHandle(e) {
         try {
             e.preventDefault();
 
-            const { data } = await axios.post("https://nba-playoffbets.herokuapp.com/signup", user);
-            authContext.setAuthState(data);
+             axios.post("https://nba-playoffbets.herokuapp.com/signup", user)
+             .then(res => {
+                authContext.setAuthState(res.data);
+                setSignupSuccessText(res.data.message);
+             })
             setSignupSuccess(true);
             setSignupError(false);
-            setSignupSuccessText(data.message);
             setTimeout(() => {
                 setRedirectOnLogin(true)
             }, 1100);
