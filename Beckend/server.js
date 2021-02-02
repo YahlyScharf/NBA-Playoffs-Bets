@@ -21,7 +21,7 @@ app.use(express.json())
 
 
 
-mongoose.connect( process.env.MONGODB_URI || uri, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI || uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -68,11 +68,11 @@ const userSchema = new Schema({
     logCount: {
         type: Number,
     },
-    bet : {
+    bet: {
         teams: [],
-        srTeams:[],
-        trTeams:[],
-        finals:[]
+        srTeams: [],
+        trTeams: [],
+        finals: []
     }
 }, {
     timestamps: true
@@ -81,7 +81,7 @@ const userSchema = new Schema({
 
 const User = mongoose.model('user', userSchema);
 
-app.get("/signup", (req,res) => {
+app.get("/signup", (req, res) => {
     res.sendFile("../src/components/Signup.js")
 })
 
@@ -96,17 +96,17 @@ app.post("/signup", async (req, res) => {
 
         const userData = {
             firstName: _.capitalize(firstName),
-            lastName:_.capitalize(lastName),
+            lastName: _.capitalize(lastName),
             email: email.toLowerCase(),
             password: hashedPassword,
             role: 'admin',
-            hasBet:false,
+            hasBet: false,
             score: 0,
-            bet : {
+            bet: {
                 teams: [],
-                srTeams:[],
-                trTeams:[],
-                finals:[]
+                srTeams: [],
+                trTeams: [],
+                finals: []
             }
         };
 
@@ -136,7 +136,7 @@ app.post("/signup", async (req, res) => {
                 role,
                 hasBet,
                 score,
-                bet 
+                bet
             } = savedUser;
 
             const userInfo = {
@@ -225,24 +225,24 @@ app.get("/users", (req, res) => {
 });
 
 app.post("/user", (req, res) => {
-    const {id} = req.body;
+    const { id } = req.body;
 
-    User.findById({_id : id})
+    User.findById({ _id: id })
         .then(user => res.json(user))
         .catch(err => res.status(400).json(err))
 
 });
 
 app.post("/bet", (req, res) => {
-    const {teams,srTeams,trTeams,finals,userInfo} = req.body;
+    const { teams, srTeams, trTeams, finals, userInfo } = req.body;
 
-    finals.map(team => team.value = team.value -12)
+    finals.map(team => team.value = team.value - 12)
 
     trTeams.map(team => {
         if (team.value >= 12) {
             return team.value = 4
         } else if (team.value >= 8) {
-            return team.value = team.value -8
+            return team.value = team.value - 8
         }
     });
 
@@ -252,14 +252,14 @@ app.post("/bet", (req, res) => {
         } else if (team.value >= 8) {
             return team.value = 4
         } else if (team.value >= 4) {
-            return team.value = team.value -4
-        } 
+            return team.value = team.value - 4
+        }
     });
 
     teams.map(team => {
-       if (team.value >= 4) {
+        if (team.value >= 4) {
             return team.value = 4
-        } 
+        }
     });
 
     const newBet = {
@@ -268,12 +268,12 @@ app.post("/bet", (req, res) => {
         trTeams,
         finals
     }
-   
-    User.findOneAndUpdate({'email':userInfo.email},{'bet':newBet} ,(err) => {
+
+    User.findOneAndUpdate({ 'email': userInfo.email }, { 'bet': newBet }, (err) => {
         if (err) {
             console.log(err);
         } else {
-            User.findOneAndUpdate({'email':userInfo.email},{hasBet:true}, err => {
+            User.findOneAndUpdate({ 'email': userInfo.email }, { hasBet: true }, err => {
                 if (err) {
                     console.log(err);
                 } else {
@@ -287,7 +287,10 @@ app.post("/bet", (req, res) => {
 
 });
 
+if (process.env.NODE_ENV === 'production'){
+    app.use(express.static('../build'))
+}
 
-app.listen( process.env.PORT || 5000 , () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log('Server started on port 5000');
 });
