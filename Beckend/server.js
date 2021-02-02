@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const jwtDecode = require('jwt-decode');
 const _ = require('lodash');
+const path = require("path");
 const uri = process.env.URI;
 const {
     createToken,
@@ -288,7 +289,11 @@ app.post("/bet", (req, res) => {
 });
 
 if (process.env.NODE_ENV === 'production'){
-    app.use(express.static('../build'))
+    app.use(express.static('../build'));
+
+    app.get("*", (req,res) =>{
+        res.sendFile(path.join(__dirname, "nba-project","build","index.html"));
+    })
 }
 
 app.listen(process.env.PORT || 5000, () => {
