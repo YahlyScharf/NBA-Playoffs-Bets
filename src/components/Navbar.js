@@ -25,10 +25,10 @@ function NavBar() {
                 <div className="collapse navbar-collapse a" id="navbarTogglerDemo02">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <button onClick={siHandle} className={place === "signin" ?"btn btn-outline-dark nav-but-r" : "btn btn-dark nav-but-o" }>Log in <FontAwesomeIcon icon={faSignInAlt} /></button>
+                            <button onClick={siHandle} className={place === "signin" ?"btn nav-but-r" : "btn  nav-but-o"}>Log in <FontAwesomeIcon icon={faSignInAlt} /></button>
                         </li>
                         <li className="nav-item">
-                            <button  onClick={suHandle} className={place === "signup" ? "btn btn-outline-dark nav-but-r" : "btn btn-dark nav-but-o" }> Sign up <FontAwesomeIcon icon={faUserPlus} /></button>
+                            <button  onClick={suHandle} className={place === "signup" ? "btn nav-but-r" : "btn nav-but-o" }> Sign up <FontAwesomeIcon icon={faUserPlus} /></button>
                         </li>
                     </ul>
                 </div>

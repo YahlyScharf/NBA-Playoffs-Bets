@@ -32,10 +32,10 @@ function Home() {
                             <div className="collapse navbar-collapse a" id="navbarTogglerDemo02">
                                 <ul className="navbar-nav ml-auto">
                                     <li className="nav-item">
-                                        <button onClick={siHandle} className="btn btn-dark nav-but-o">Get started</button>
+                                        <button onClick={siHandle} className="btn nav-but-o-home">Get started</button>
                                     </li>
                                     <li className="nav-item">
-                                        <button onClick={suHandle} className="btn btn-outline-dark nav-but-r" >Sign in</button>
+                                        <button onClick={suHandle} className="btn nav-but-r-home" >Sign in</button>
                                     </li>
                                 </ul>
                             </div>
