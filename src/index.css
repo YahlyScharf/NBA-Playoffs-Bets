@@ -238,7 +238,7 @@ body {
   width: 75%;
   margin-left:12%;
   background-color: black;
-  opacity: 90%;
+  opacity: 0.9%;
   color: white;
   }
   
@@ -267,7 +267,7 @@ body {
   width: 600px;
   height: 380px;
   background-color: white;
-  opacity: 88%;
+  opacity: 0.88%;
   border-radius: 8px;
   border-color: black;
   border-style: solid;
@@ -339,7 +339,7 @@ body {
   margin-left: 5%;
   margin-top: 80px;
   background-color: black;
-  opacity: 90%;
+  opacity: 0.9%;
   padding-top: 30px;
   border-radius: 8px;
   border-color: white;
@@ -366,7 +366,7 @@ body {
   margin-top: 25px;
   font-weight: 600;
   background-color: black;
-  opacity: 82%;
+  opacity: 0.82%;
   color: white;
   }
   .nav-but-r{
@@ -377,7 +377,7 @@ body {
     margin-top: 25px;
     font-weight: 600;
     background-color: white;
-    opacity: 82%;
+    opacity: 0.82%;
     color: black;
   }
 
@@ -420,13 +420,13 @@ body {
   }
   .navi-boi {
   background-color: rgb(230, 225, 225);
-  opacity: 90%;
+  opacity: 0.9%;
   text-decoration: none;
   }
   
   .form-outer{
   background-color: black;
-  opacity: 90%;
+  opacity: 0.9%;
   padding-top: 30px;
   padding-bottom: 30px;
   position: absolute;
@@ -442,7 +442,7 @@ body {
   
   .form-outer-2{
   background-color: black;
-  opacity: 87%;
+  opacity: 0.87%;
   padding-top: 30px;
   padding-bottom: 30px;
   position: absolute;
