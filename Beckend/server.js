@@ -14,14 +14,24 @@ const {
 
 const app = express();
 
+const whitelist = ['http://example1.com', 'http://example2.com']
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 app.use(cors({
-    origin: "https://nba-playoffbets.herokuapp.com",
+    corsOptions,
     credentials: true
 }));
 app.use(express.json())
 
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
+   
     res.header(
         "Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept"
