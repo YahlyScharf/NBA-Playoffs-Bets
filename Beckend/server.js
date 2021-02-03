@@ -21,13 +21,13 @@ app.use(cors({
 app.use(express.json())
 
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://nba-playoffbets.herokuapp.com");
+    res.setHeader("Access-Control-Allow-Origin", "*");
     res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
     );
     next();
-  });
+});
 
 
 
@@ -293,11 +293,11 @@ app.post("/bet", (req, res) => {
 
 });
 
-if (process.env.NODE_ENV === 'production'){
+if (process.env.NODE_ENV === 'production') {
     app.use(express.static('../build'));
 
-    app.get("*", (req,res) =>{
-        res.sendFile(path.join(__dirname, "nba-project","build","index.html"));
+    app.get("*", (req, res) => {
+        res.sendFile(path.join(__dirname, "nba-project", "build", "index.html"));
     })
 }
 
