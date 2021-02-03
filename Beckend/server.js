@@ -20,6 +20,15 @@ app.use(cors({
 }));
 app.use(express.json())
 
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://nba-playoffbets.herokuapp.com");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+  });
+
 
 
 mongoose.connect(process.env.MONGODB_URI || uri, { useNewUrlParser: true, useUnifiedTopology: true });
