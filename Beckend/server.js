@@ -14,7 +14,7 @@ const {
 
 const app = express();
 
-const whitelist = ['http://example1.com', 'http://example2.com']
+const whitelist = ['https://nba-playoffbets.herokuapp.com']
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
