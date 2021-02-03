@@ -46,29 +46,35 @@ function SignIn() {
 
 
 
- function clickHandle(e) {
-        try {
-            e.preventDefault();
-            axios.post("https://nba-playoffbets.herokuapp.com/signin", user)
-            .then (res => {
-                  setSignInSuccessText(res.data.message);
-                  authContext.setAuthState(res.data);
-            })
-            setSignInError(false);
-            setLoading(true)
-            setTimeout(() => {
-                setLoading(false)
-                setSignInSuccess(true)
-            }, 1100)
-            setTimeout(() => {
-                setRedirectOnLogin(true)
-            },2200)
-        } catch (error) {
-            const { data } = error.response;
-            setSignInError(true);
-            setSignInSuccess(false)
-            setSignInErrorText(data.message);
-        }
+    function clickHandle(e) {
+
+        e.preventDefault();
+        axios.post("https://nba-playoffbets.herokuapp.com/signin", user)
+            .then(res => {
+                console.log(res.data);
+                if (res.data.message === 'Logged In!') {
+                    setSignInSuccessText(res.data.message);
+                    authContext.setAuthState(res.data);
+                    setSignInError(false);
+                    setLoading(true)
+                    setTimeout(() => {
+                        setLoading(false)
+                        setSignInSuccess(true)
+                    }, 1100)
+                    setTimeout(() => {
+                        setRedirectOnLogin(true)
+                    }, 2200)
+                }})
+                .catch (err => {
+                    const {data} = err.response
+                    
+                        console.log(data.message);
+                        setSignInError(true);
+                        setSignInSuccess(false)
+                        setSignInErrorText(data.message);
+                })
+
+
 
     }
 
@@ -82,21 +88,21 @@ function SignIn() {
 
                 <form>
                     {signInError && <FormError text={signInErrorText} />}
-                        {loading && <Loader
-                            type="Oval"
-                            color="black"
-                            height={50}
-                            width={50}
-                            className="loadit"
-                        />}
-                        {signInSuccess && <FormSuccess text={signInSuccessText} />}
-                        <br/>
-                        <br/>
-                        <br/>
+                    {loading && <Loader
+                        type="Oval"
+                        color="black"
+                        height={50}
+                        width={50}
+                        className="loadit"
+                    />}
+                    {signInSuccess && <FormSuccess text={signInSuccessText} />}
+                    <br />
+                    <br />
+                    <br />
                     <div className="form-outer">
 
                         <h3>Log In To Your Account</h3>
-                        
+
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
                             <br />
@@ -108,8 +114,8 @@ function SignIn() {
                             <br />
                             <input type="password" onChange={changeHandle} name="password" id="password" className="form-control-lg" placeholder="Enter password" />
                         </div>
-                        
-                        <br/>
+
+                        <br />
 
                         <button type="submit" onClick={clickHandle} className="btn btn-outline-light but-s">Log In</button>
                         <br />
