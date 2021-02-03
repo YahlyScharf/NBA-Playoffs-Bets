@@ -51,7 +51,6 @@ function SignIn() {
         e.preventDefault();
         axios.post("https://nba-playoffbets.herokuapp.com/signin", user)
             .then(res => {
-                console.log(res.data);
                 if (res.data.message === 'Logged In!') {
                     setSignInSuccessText(res.data.message);
                     authContext.setAuthState(res.data);

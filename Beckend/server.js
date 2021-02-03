@@ -15,7 +15,7 @@ const {
 const app = express();
 
 app.use(cors({
-    origin: "http://localhost:3000",
+    origin: "https://nba-playoffbets.herokuapp.com",
     credentials: true
 }));
 app.use(express.json())
