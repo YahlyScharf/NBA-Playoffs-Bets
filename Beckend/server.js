@@ -17,7 +17,7 @@ const app = express();
 // Access-Control-Allow-Origin: "https://nba-playoffsbets.netlify.app"
 
 app.use(cors({
-    origin:"https://nba-playoffsbets.netlify.app/signin",
+    origin:"*",
     credentials: true
 }));
 app.use(express.json())
