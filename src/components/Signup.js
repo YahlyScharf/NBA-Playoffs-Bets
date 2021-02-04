@@ -64,25 +64,29 @@ function SignUp() {
     }
 
      function clickHandle(e) {
-        try {
+        
             e.preventDefault();
-
              axios.post("https://nba-playoffbets.herokuapp.com/signup", user)
              .then(res => {
-                authContext.setAuthState(res.data);
-                setSignupSuccessText(res.data.message);
+                if (res.data.message === 'User Added!'){
+                    authContext.setAuthState(res.data);
+                    setSignupSuccessText(res.data.message);
+                    setSignupSuccess(true);
+                    setSignupError(false);
+                    setTimeout(() => {
+                        setRedirectOnLogin(true)
+                    }, 1100);
+                }
+               
              })
-            setSignupSuccess(true);
-            setSignupError(false);
-            setTimeout(() => {
-                setRedirectOnLogin(true)
-            }, 1100);
-        } catch (error) {
-            const { data } = error.response;
-            setSignupSuccess(false);
-            setSignupError(true);
-            setSignupErrorText(data.message);
-        }
+             .catch (err => {
+                const { data } = err.response;
+                setSignupSuccess(false);
+                setSignupError(true);
+                setSignupErrorText(data.message);
+             })
+           
+        
     }
 
 
