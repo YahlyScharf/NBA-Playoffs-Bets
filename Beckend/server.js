@@ -14,19 +14,15 @@ const {
 
 const app = express();
 
-const whitelist = ['https://nba-playoffbets.herokuapp.com']
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-app.use(cors(corsOptions));
 
-app.use(express.json());
+app.use(cors({
+    origin:"https://nba-playoffsbets.netlify.app",
+    credentials: true
+}));
+app.use(express.json())
+
+
+
 
 mongoose.connect(process.env.MONGODB_URI || uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
