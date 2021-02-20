@@ -13,6 +13,7 @@ import NewBet from './NewBet'
 import LoadingPage from '../addOns/LoadingPage';
 import UserBet from './UserBet';
 import Home from './Home';
+import NotFound from './NotFound'
 
 function App() {
 
@@ -21,8 +22,8 @@ function App() {
       <AuthProvider>
         <FetchProvider>
           <div >
-
-            <Route exact path='/' component={Home} />
+          <Switch>
+          <Route exact path='/' component={Home} />
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
             <Route path="/..." component={LoadingPage} />
@@ -30,6 +31,10 @@ function App() {
             <Route path="/place-bet" component={NewBet} />
             <Route path="/standings" component={Standings} />
             <Route path="/user-bet/:id" component={UserBet} />
+            <Route component={NotFound} />
+          </Switch>
+
+           
           </div>
         </FetchProvider>
 

@@ -9,25 +9,33 @@ import axios from 'axios'
 
 
 function Dashboard() {
+
     const authContext = useContext(AuthContext);
     const {
         userInfo
     } = authContext.authState;
 
-     
-    
-        return (
-            
-            <>
-            { userInfo === null ?  <Redirect to="/" /> : null}
-            
+
+      const userAuthentication =  authContext.isAuthenticated();
+      
+      if (userAuthentication === true) {
+        console.log('Hello');
+      } else {
+        window.location.href = "/signin"
+      }
+
+    return (
+
+        <>
+          
+
             <div>
                 <NavBar />
                 <h1 className="text-left-h1">  Hello {userInfo.firstName}!</h1>
                 <Bracket />
             </div>
-            </>
-        );
+        </>
+    );
 
 
 

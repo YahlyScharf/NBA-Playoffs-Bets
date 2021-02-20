@@ -9,6 +9,19 @@ import UserLoading from "../addOns/UserLoading";
 
 function TableGen() {
 
+    const authContext = useContext(AuthContext);
+    const {
+        userInfo
+    } = authContext.authState;
+
+    const userAuthentication =  authContext.isAuthenticated();
+      
+    if (userAuthentication === true) {
+      console.log('Hello');
+    } else {
+      window.location.href = "/signin"
+    }
+
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -17,11 +30,6 @@ function TableGen() {
                 setUsers([...response.data])
             });
     })
-
-    const authContext = useContext(AuthContext);
-    const {
-        userInfo
-    } = authContext.authState;
 
     function compareUsers(a, b) {
         if (a.score < b.score) {

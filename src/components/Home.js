@@ -1,18 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext'
 import NavBar from './Navbar';
 import background from "../images/landingPage.png";
+
 function Home() {
+    const authContext = useContext(AuthContext);
+    const {
+        userInfo
+    } = authContext.authState;
+
+    const userAuthentication = authContext.isAuthenticated();
+
+
+
 
     const [redirect, setRedirect] = useState(false)
-    const [redirectToSign,setRedirectToSign] = useState(false);
+    const [authRedirect, setAuthRedirect] = useState(false)
+    const [redirectToSign, setRedirectToSign] = useState(false);
 
     function siHandle() {
-        setRedirect(true)
+        if (userAuthentication === true) {
+            setAuthRedirect(true)
+        } else {
+            setRedirect(true)
+        }
+
     }
     function suHandle() {
-        setRedirectToSign(true)
-
+        if (userAuthentication === true) {
+            setAuthRedirect(true)
+        } else {
+            setRedirectToSign(true)
+        }
     }
     return (
 
@@ -20,6 +40,7 @@ function Home() {
             <section id="video">
 
                 {redirect && <Redirect to="/signup" />}
+                {authRedirect && <Redirect to="/dashboard" />}
                 {redirectToSign && <Redirect to="/signin" />}
 
                 <div className="bg-color" >
