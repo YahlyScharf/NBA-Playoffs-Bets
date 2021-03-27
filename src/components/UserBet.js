@@ -123,17 +123,10 @@ function UserBet() {
                         </div>
                     </div>
 
-                </div> : <div>
-                    <UserLoading />;
-                {
-                        setTimeout(() => {
-                            window.location.href = "/standings"
-                        },2500)
-                    }
-
-
-                </div>
+                </div> :
+                <UserLoading />
             }
+            
         </>
     );
 
