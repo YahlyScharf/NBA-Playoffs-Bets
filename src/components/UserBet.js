@@ -31,8 +31,8 @@ function UserBet() {
 
     if (cancel === 3){
         if(userInfo.bet.teams.length === 0){
-            window.history.go(-1);
-            window.location.reload()
+            window.location.href = "/standings"
+            // window.location.reload()
         }
     }
 
