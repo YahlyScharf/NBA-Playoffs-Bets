@@ -63,15 +63,15 @@ function SignIn() {
                     setTimeout(() => {
                         setRedirectOnLogin(true)
                     }, 2200)
-                }})
-                .catch (err => {
-                    const {data} = err.response
-                    
-                        console.log(data.message);
-                        setSignInError(true);
-                        setSignInSuccess(false)
-                        setSignInErrorText(data.message);
-                })
+                }
+            })
+            .catch(err => {
+
+                const { data } = err.response
+                setSignInError(true);
+                setSignInSuccess(false)
+                setSignInErrorText(data.message);
+            })
 
 
 

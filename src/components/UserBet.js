@@ -12,6 +12,15 @@ function UserBet() {
 
     const { id } = useParams();
     const [userInfo, setUserInfo] = useState()
+    var seconds = 0;
+
+    function incrementSeconds () {
+        seconds += 1;
+    }
+
+    var cancel = setInterval(incrementSeconds, 1000);
+
+    
 
     useEffect(() => {
         axios.post("https://nba-playoffbets.herokuapp.com/user", { id })
@@ -19,6 +28,13 @@ function UserBet() {
                 setUserInfo(res.data)
             })
     });
+
+    if (cancel === 3){
+        if(userInfo.bet.teams.length === 0){
+            window.history.go(-1);
+            window.location.reload()
+        }
+    }
 
     return (
         <>
