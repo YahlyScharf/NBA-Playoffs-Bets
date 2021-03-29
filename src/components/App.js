@@ -13,7 +13,8 @@ import NewBet from './NewBet'
 import LoadingPage from '../addOns/LoadingPage';
 import UserBet from './UserBet';
 import Home from './Home';
-import NotFound from './NotFound'
+import NotFound from './NotFound';
+import betErr from './BetErr';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
             <Route path="/..." component={LoadingPage} />
+            <Route path="/bet-err" component={betErr} />
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/place-bet" component={NewBet} />
             <Route path="/standings" component={Standings} />
