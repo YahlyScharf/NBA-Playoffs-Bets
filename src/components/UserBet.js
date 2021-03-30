@@ -19,7 +19,7 @@ function UserBet() {
 
 
     function redirectOnEmptyBetArray() {
-        if (userInfo.bet.teams.length === 0 || userInfo.bet.srTeams.length === 0 || userInfo.bet.trTeams.length === 0 || userInfo.bet.finals.length === 0) {
+        if (userInfo.hasBet === false || userInfo.bet.finals[0].value === 0 || userInfo.bet.finals[1].value === 0 ) {
             return <Redirect to="/standings" />
         } else {
             return (
