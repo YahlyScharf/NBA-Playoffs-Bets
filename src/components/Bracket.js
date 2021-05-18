@@ -22,31 +22,31 @@ function Bracket() {
     const [redirect, setRedirect] = useState(false);
 
     const [teams1, setTeams1] = useState([
-        { name: "Lakers", value: 0 },
-        { name: "Trail Blazers", value: 0 },
-        { name: "Rockets", value: 0 },
-        { name: "Thunder", value: 0 }
+        { name: "Jazz", value: 0 },
+        { name: "Warriors", value: 0 },
+        { name: "Clippers", value: 0 },
+        { name: "Mavericks", value: 0 }
     ]);
 
     const [teams2, setTeams2] = useState([
         { name: "Nuggets", value: 0 },
-        { name: "Jazz", value: 0 },
-        { name: "Mavricks", value: 0 },
-        { name: "Clippers", value: 0 }
+        { name: "Trail Blazers", value: 0 },
+        { name: "Lakers", value: 0 },
+        { name: "Suns", value: 0 }
     ]);
 
     const [teams3, setTeams3] = useState([
-        { name: "Bucks", value: 0 },
-        { name: "Magic", value: 0 },
-        { name: "Heat", value: 0 },
-        { name: "Pacers", value: 0 }
+        { name: "76ers", value: 0 },
+        { name: "Wizards", value: 0 },
+        { name: "Knicks", value: 0 },
+        { name: "Hawks", value: 0 }
     ]);
 
     const [teams4, setTeams4] = useState([
+        { name: "Bucks", value: 0 },
+        { name: "Heat", value: 0 },
         { name: "Celtics", value: 0 },
-        { name: "76ers", value: 0 },
-        { name: "Nets", value: 0 },
-        { name: "Raptors", value: 0 }
+        { name: "Nets", value: 0 }
     ]);
     const [srTeams1, setSrTeams1] = useState([]);
     const [srTeams2, setSrTeams2] = useState([]);
