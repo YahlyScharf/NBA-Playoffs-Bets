@@ -95,9 +95,7 @@ function SignIn() {
                         className="loadit"
                     />}
                     {signInSuccess && <FormSuccess text={signInSuccessText} />}
-                    <br />
-                    <br />
-                    <br />
+        
                     <div className="form-outer">
 
                         <h3>Log In To Your Account</h3>

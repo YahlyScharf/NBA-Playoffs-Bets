@@ -264,8 +264,8 @@
   }
   
   .loader {
+  margin: 0 auto;
   margin-top:13%;
-  margin-left: 28%;
   width: 600px;
   height: 380px;
   background-color: white;
@@ -444,11 +444,10 @@
   .form-outer{
   background-color: black;
   opacity: 0.9;
-  padding-top: 30px;
+  margin: 0 auto;
+   margin-top: 3%; 
+   padding-top: 30px;  
   padding-bottom: 30px;
-  position: absolute;
-  left:35.2%;
-  top:17%;
   width: 400px;
   border-radius: 8px;
   border-color: white;
@@ -459,12 +458,11 @@
   
   .form-outer-2{
   background-color: black;
+  margin: 0 auto;
+  margin-top: 4%;
   opacity: 0.87;
   padding-top: 30px;
-  padding-bottom: 30px;
-  position: absolute;
-  left:28%;
-  top:17%;
+  padding-bottom: 30px; 
   width: 600px;
   border-radius: 5px;
   color: white;
@@ -541,9 +539,12 @@
   
   
   .mt-8 {
+  margin: 0 auto;
   margin-top: 2%;
   margin-right: 35% ;
   margin-left: 35%;
+  margin-bottom: 0;
+  padding-bottom: 0;
   }
   
   

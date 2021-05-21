@@ -31,7 +31,7 @@ function NewBet() {
         <>
             <div>
                 {userInfo.hasBet ? <Redirect to="/dashboard" /> : null}
-                {show ? <div>
+                {show ? <div className="lodaer">
                     <Alert show={show} variant="info" className='form-outer-2'>
                         <Alert.Heading>Welcome {userInfo.firstName} ,Nice to have you here!</Alert.Heading>
                         <br />
