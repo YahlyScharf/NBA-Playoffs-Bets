@@ -23,7 +23,7 @@ function Bracket() {
 
     const [teams1, setTeams1] = useState([
         { name: "Jazz", value: 0 },
-        { name: "Warriors", value: 0 },
+        { name: "Grizzlies", value: 0 },
         { name: "Clippers", value: 0 },
         { name: "Mavericks", value: 0 }
     ]);

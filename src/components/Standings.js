@@ -66,7 +66,7 @@ function TableGen() {
                             <th>Place</th>
                             <th>Name</th>
                             <th>Score</th>
-                            <th>Users Bet</th>
+                            <th>View Users Bracket</th>
                         </tr>
                         {users.map((user, index) => {
 

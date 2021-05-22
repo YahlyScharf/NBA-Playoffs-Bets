@@ -30,7 +30,7 @@ function NavBar() {
                 <div className="collapse navbar-collapse not a" id="navbarTogglerDemo02">
                     <ul className="navbar-nav ml-auto ">
                         <li className="nav-item">
-                            <button onClick={siHandle} className={place === "dashboard" ? "btn nav-but-r" : "btn nav-but-o"}>My Bet <FontAwesomeIcon icon={faUser} /></button>
+                            <button onClick={siHandle} className={place === "dashboard" ? "btn nav-but-r" : "btn nav-but-o"}>My Bracket <FontAwesomeIcon icon={faUser} /></button>
                         </li>
                         <li className="nav-item">
                             <button onClick={suHandle} className={place === "standings" ? "btn nav-but-r" : "btn nav-but-o"}> Standings  <FontAwesomeIcon icon={faTable} /></button>
